@@ -1,0 +1,24 @@
+{% if section.settings.outlane_features_section_id %} 
+<div data-section-id="{{section.id}}" data-section-type="outlane-features"> 
+<div class="ol-features" data-section="{{section.settings.outlane_features_section_id}}"></div> 
+</div> 
+{% endif %} 
+{% schema %}{ "name": "Features Section","settings": [
+{"type": "header", "content": "General Settings"},
+{"type": "select",
+"id": "outlane_features_section_id",
+"label": "Select features section",
+"default": "0",
+"options": [
+{"value": "0","label": "Select section"}, 
+{"value": "5ee283b6613c190023d7f9bc",
+"label": "why shop TSL?"
+}, 
+{"value": "5ef9144e37076000231e009d",
+"label": "Sustainability certifcation process"
+}
+] } ],
+"presets": [ { "name": "Features Section", "category": "Outlane"} ]}
+{% endschema %} 
+{% stylesheet %}{% endstylesheet %} 
+{% javascript %}{% endjavascript %}

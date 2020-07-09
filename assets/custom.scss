@@ -1,0 +1,56 @@
+// TABS
+$unselected-tab-border-bottom: #acacac;
+$tab-padding-bottom: 5px;
+$unselected-tab-border-width: 2px;
+$active-tab-border-width: 3px;
+$tab-margin: $active-tab-border-width - $unselected-tab-border-width;
+
+ul.product-tabs {
+  display: block;
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+ul.product-tabs li {
+  display: block;
+  float: left;
+  height: 30px;
+  margin-top: 10px;
+  padding: 0;
+  width: auto;
+}
+
+ul.product-tabs li a {
+  display: block;
+  font-size: 15px;
+  padding: 0 15px;
+  padding-bottom: $tab-padding-bottom + $tab-margin;
+  text-decoration: none;
+  width: auto;
+  color: black;
+  border-bottom: $unselected-tab-border-width solid $unselected-tab-border-bottom;
+}
+
+ul.product-tabs li a.active {
+  color: #686868;
+  border-bottom: $active-tab-border-width solid black;
+  position: relative;
+  padding-bottom: $tab-padding-bottom;
+}
+
+ul.product-tabs li:first-child a {
+  padding-left: 0;
+}
+
+ul.product-tabs:before,
+ul.product-tabs:after {
+  content: " ";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+}
+ul.product-tabs:after {
+  clear: both;
+}

@@ -139,13 +139,13 @@
         <ul class="product-tabs">
           {% for tab in product.metafields.tabs %}
           <li>
-            <a href="#{{ tab[0] | handleize}}">{{tab[0] | slice: 2, tab[0].size}}</a>
+            <a href="#{{ tab[0] | slice: 2, tab[0].size | handleize}}">{{tab[0] | slice: 2, tab[0].size | strip}}</a>
           </li>
           {% endfor %}
         </ul>
 
         {% for tab in product.metafields.tabs %}
-        <div id="{{ tab[0] | handleize}}">
+        <div id="{{ tab[0] | slice: 2, tab[0].size | handleize}}">
           {{ tab[1] }}
         </div>
         {% endfor %}

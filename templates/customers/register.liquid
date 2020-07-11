@@ -1,6 +1,4 @@
-<div class="grid">
-
-  <div class="grid__item wide--one-third large--one-half small--text-center">
+<div class="customer-form-container wide--one-third large--one-half small--text-center">
 
     <div class="section-header section-header--large">
       <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
@@ -25,13 +23,21 @@
       <label for="CreatePassword" class="label--hidden">{{ 'customer.register.password' | t }}</label>
       <input type="password" name="customer[password]" id="CreatePassword" placeholder="{{ 'customer.register.password' | t }}" {% if form.errors contains "password" %} class="error"{% endif %}>
 
-      <p>
+      <div id="register-newsletter-container">
+        <input type="checkbox" id="register-newsletter-checkbox" name="customer[accepts_marketing]">
+        <label class="label-checkbox" for="register-newsletter-checkbox">{{'layout.customer.newsletter_subscribe' | t}}</label>
+      </div>
+
+      <div id="register-button-container">
         <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn">
-      </p>
-      <a href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a>
+        <p>{{ 'layout.customer.returning_customer' | t }} {{ 'layout.customer.log_in' | t | append: '→' | customer_login_link }}</p>
+      </div>
+
+      <div class="links-under-submit-button">
+        <a href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a>
+      </div>
 
     {% endform %}
 
   </div>
 
-</div>

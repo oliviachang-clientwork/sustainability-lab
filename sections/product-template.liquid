@@ -70,16 +70,14 @@
           </div>
 
           {% if product.images.size > 1 %}
-
-            <ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
+          
+            <div class="product-images" id="ProductThumbs">
               {% for image in product.images %}
-                <li class="grid__item wide--one-quarter large--one-third medium-down--one-third">
-                  <a data-image-id="{{ image.id }}" href="{{ image.src | img_url: '1024x1024' }}" class="product-single__thumbnail">
-                    <img src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}">
-                  </a>
-                </li>
+              <a data-image-id="{{ image.id }}" href="{{ image.src | img_url: '1024x1024' }}" class="product-single__thumbnail">
+                <img src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}">
+              </a>
               {% endfor %}
-            </ul>
+            </div>
 
           {% endif %}
 

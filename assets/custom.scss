@@ -1,3 +1,29 @@
+// PRODUCT IMAGES - HORIZONTAL
+.product-images {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  margin-bottom: 50px;
+}
+
+.product-images a {
+  display: inline;
+}
+
+$num-product-img-display-at-once: 4;
+$product-img-width: percentage(1 / $num-product-img-display-at-once);
+$product-image-margin: 20px;
+
+.product-images img {
+  width: calc(#{$product-img-width} - #{$product-image-margin});
+  margin-right: $product-image-margin;
+}
+
+.product-images a:last-child img {
+  margin-right: 0;
+}
+
 // TABS
 $unselected-tab-border-bottom: #acacac;
 $tab-padding-bottom: 6px;
@@ -53,4 +79,29 @@ ul.product-tabs:after {
 }
 ul.product-tabs:after {
   clear: both;
+}
+
+// Login customization
+
+.customer-form-container {
+  margin: 0 auto;
+}
+
+.links-under-submit-button {
+  margin-top: 45px;
+}
+
+#register-newsletter-container {
+  margin-bottom: 30px;
+}
+
+.label-checkbox {
+  display: inline;
+}
+
+#register-button-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }

@@ -259,7 +259,9 @@
       "log_out": "Log out",
       "log_in": "Log in",
       "create_account": "Create account",
-      "or": "or"
+      "or": "or",
+      "newsletter_subscribe": "Subscribe to our newsletter?",
+      "returning_customer": "Returning Customer?"
     },
     "footer": {
       "blog_title": "Latest News",

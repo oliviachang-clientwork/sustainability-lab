@@ -36,8 +36,9 @@
         <p>
           <input type="submit" class="btn" value="{{ 'customer.login.sign_in' | t }}">
         </p>
+        <hr class="divider-under-submit-button">
         <div class="links-under-submit-button">
-          <p>{{ 'layout.customer.create_account' | t | customer_register_link }}</p>
+          <p>{{'layout.customer.create_account_prefix' | t}} {{ 'layout.customer.create_account' | t | customer_register_link }}.</p>
           <a href="{{ shop.url }}">{{ 'customer.login.cancel' | t }}</a>
         </div>
 

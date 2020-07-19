@@ -25,7 +25,7 @@
           {% include 'image-style' with image: collection_image, width: collection_width, height: 600, wrapper_id: img_wrapper_id, img_id: img_id %}
 
           <div id="{{ img_wrapper_id }}" class="collection__grid-image-wrapper supports-js">
-            <div style="padding-top:{{ 1 | divided_by: collection_image.aspect_ratio | times: 100}}%;">
+            <div style="padding-top:100%;">
               <img id="{{ img_id }}"
                    class="collection__grid-image lazyload"
                    src="{{ collection_image | img_url: '300x300' }}"

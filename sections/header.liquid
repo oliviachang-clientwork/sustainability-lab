@@ -91,12 +91,9 @@
                   {{ 'layout.customer.log_out' | t | customer_logout_link }}
                 </li>
               {% else %}
+                <i class="fa fa-user-o log-in-icon" aria-hidden="true"></i>
                 <li>
                   {{ 'layout.customer.log_in' | t | customer_login_link }}
-                </li>
-                <li>{{ 'layout.customer.or' | t }}</li>
-                <li>
-                  {{ 'layout.customer.create_account' | t | customer_register_link }}
                 </li>
               {% endif %}
             </ul>

@@ -128,7 +128,9 @@
       <div class="grid__item text-center">
         <span class="visually-hidden">{{ 'general.payment.method' | t }}</span>
         <ul class="inline-list payment-icons">
-          {% for type in shop.enabled_payment_types %}
+          
+{% assign enabled_payment_types = 'visa, master, american_express, discover, jcb, diners_club, shopify_pay, apple_pay, google_pay, paypal' | remove: ' ' | split: ',' %}
+{% for type in enabled_payment_types %}
             <li>
               {{ type | payment_type_svg_tag: class: 'icon' }}
             </li>

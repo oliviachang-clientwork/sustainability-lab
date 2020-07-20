@@ -130,12 +130,12 @@
       "collection-template": {
         "type": "collection-template",
         "settings": {
-          "vendor_enable": false,
+          "vendor_enable": true,
           "show_sale_circle": true,
           "show_sold_out_circle": true,
           "sort_enable": true,
           "tags_enable": true,
-          "center_grid_link": false
+          "center_grid_link": true
         }
       },
       "collection-list": {
@@ -302,7 +302,7 @@
       "1591903441655": {
         "type": "outlane-features",
         "settings": {
-          "outlane_features_section_id": "5ee283b6613c190023d7f9bc"
+          "outlane_features_section_id": "5f0b8bb97fca9c0023347983"
         }
       },
       "1591911633487": {
@@ -311,11 +311,11 @@
           "1591911633487-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/denys-nevozhai-z0nVqfrOqWA-unsplash.jpg",
-              "alignment": "center center",
-              "overlay_opacity": 30,
+              "image": "shopify:\/\/shop_images\/full-frame-photography-of-leaves-1534925.jpg",
+              "alignment": "left center",
+              "overlay_opacity": 22,
               "color_text": "#ffffff",
-              "text_alignment": "left",
+              "text_alignment": "center",
               "slide_heading": "Our mission is to help everyday individuals live in alignment with their values to secure the future of our planet—without sacrificing quality, price, or aesthetics. We believe in the power of consumers to vote with our dollars, and not only imagine the future we want, but to create it. We make this process simple and clear for our customers.",
               "button_label": "",
               "button_link": ""
@@ -330,7 +330,7 @@
           "slider_autorotate": false,
           "slider_autorotate_rate": 5,
           "slider_home_transition": "slide",
-          "text_size": "medium"
+          "text_size": "small"
         }
       },
       "slider": {
@@ -352,11 +352,11 @@
           "slider-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/rsz_peter-vanosdall-uzvtaixv8c8-unsplash.jpg",
+              "image": "shopify:\/\/shop_images\/person-holding-pink-plastic-cup-3738032.jpg",
               "alignment": "center center",
-              "overlay_opacity": 10,
-              "color_text": "#ffffff",
-              "text_alignment": "left",
+              "overlay_opacity": 0,
+              "color_text": "#0f0e0e",
+              "text_alignment": "right",
               "slide_heading": "Your one-stop, curated shop for first-mover products with sustainable DNA",
               "button_label": "",
               "button_link": ""
@@ -365,11 +365,11 @@
           "slider-2": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/vacation-peace-sign-in-ocean.jpg",
+              "image": "shopify:\/\/shop_images\/photo-of-leaves-1382393.jpg",
               "alignment": "center center",
-              "overlay_opacity": 13,
+              "overlay_opacity": 27,
               "color_text": "#ffffff",
-              "text_alignment": "left",
+              "text_alignment": "center",
               "slide_heading": "we've got you covered—never sacrifice on quality, price, or aesthetics",
               "button_label": "",
               "button_link": ""
@@ -378,12 +378,38 @@
           "1591913977230": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Untitled_design_4.png",
+              "image": "shopify:\/\/shop_images\/woman-in-black-pants-3738035.jpg",
+              "alignment": "center center",
+              "overlay_opacity": 16,
+              "color_text": "#ebebeb",
+              "text_alignment": "right",
+              "slide_heading": "sustainability for everyone, not just the sustainability people",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "1595180886402": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/rsz_set-of-natural-nonpolluting-toiletries-on-marble-table-4202926.jpg",
               "alignment": "center center",
               "overlay_opacity": 0,
-              "color_text": "#ebebeb",
+              "color_text": "#ffffff",
+              "text_alignment": "left",
+              "slide_heading": "Personal care essentials",
+              "button_label": "shop now",
+              "button_link": ""
+            }
+          },
+          "1595180942214": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/gaelle-marcel-g917EoHF-Ls-unsplash.jpg",
+              "alignment": "center center",
+              "overlay_opacity": 0,
+              "color_text": "#ffffff",
               "text_alignment": "center",
-              "slide_heading": "sustainability for everyone, not just the sustainability people",
+              "slide_heading": "Image slide",
               "button_label": "",
               "button_link": ""
             }
@@ -393,7 +419,9 @@
           "1591493499319",
           "slider-1",
           "slider-2",
-          "1591913977230"
+          "1591913977230",
+          "1595180886402",
+          "1595180942214"
         ],
         "settings": {
           "slider_height": "large",
@@ -473,6 +501,7 @@
       },
       "1593382705482": {
         "type": "slider-starthere",
+        "disabled": true,
         "blocks": {
           "1593382705482-0": {
             "type": "image",
@@ -501,6 +530,7 @@
       },
       "1593383031146": {
         "type": "slider-starthere",
+        "disabled": true,
         "blocks": {
           "1593383031146-0": {
             "type": "image",
@@ -529,6 +559,7 @@
       },
       "1593383437528": {
         "type": "slider-starthere",
+        "disabled": true,
         "blocks": {
           "1593383437528-0": {
             "type": "image",
@@ -576,6 +607,134 @@
           "text": "",
           "text_size": "medium"
         }
+      },
+      "smk_collection_blocks_top": {
+        "type": "smk_collection_blocks_top",
+        "settings": {
+          "show_collection_blocks_above_collection": false
+        }
+      },
+      "smk_collection_blocks_bottom": {
+        "type": "smk_collection_blocks_bottom",
+        "settings": {
+          "show_collection_blocks_below_collection": false
+        }
+      },
+      "1594585435407": {
+        "type": "slider-starthere",
+        "blocks": {
+          "1594585435407-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/our_vision_1.png",
+              "alignment": "center center",
+              "overlay_opacity": 0,
+              "color_text": "#080000",
+              "text_alignment": "center",
+              "slide_heading": "Our vision for the sustainable future: nothing will be described as “sustainable,” because everything will be sustainable, by default.",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "1594585435407-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/our_vision_5.png",
+              "alignment": "center center",
+              "overlay_opacity": 0,
+              "color_text": "#000000",
+              "text_alignment": "center",
+              "slide_heading": "In the sustainable future, we will have reimagined our systems, culture, and economy to avoid the climate catastrophe. Our society will be powered by renewable energy; our food will come from our yards and local farmers, who will nourish pollinators and refuse to use pesticides. The supply chain will be ethical, clean, and carbon-free. We’ll get around in electric vehicles, airline companies won’t use fossil fuels, and our public transportation systems will be modernized.",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "1594588130260": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/our_vision_5.png",
+              "alignment": "center center",
+              "overlay_opacity": 0,
+              "color_text": "#000000",
+              "text_alignment": "center",
+              "slide_heading": "Our public health will take its rightful place as a priority as harmful subsidies to support meat production go away in favor of plant-rich diets; our cities and towns will encourage walking and cycling over sedentary, isolating driving. All of that excess healthcare spending will be invested instead in education, infrastructure, housing, and research & development. Rather than 4.6 million people dying every year from air pollution, everyone will be able to breathe clean air. We won't hear stories like those about Flint, Michigan, because our water will be clean, lead-free, and available for all.",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "1594588430923": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/our_vision_5.png",
+              "alignment": "center center",
+              "overlay_opacity": 0,
+              "color_text": "#000000",
+              "text_alignment": "center",
+              "slide_heading": "We’ll swim in our rivers and lakes without fear; our oceans will become plastic-free; our sewage systems won’t leak untreated waste into our beaches. We will replace our suburban sprawl with wilderness, small-scale farms, and clean, local manufacturing. Our skies will be dark at night so birds can migrate safely and we can see the full might of the stars as we were meant to.",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "1594588512723": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/our_vision_5.png",
+              "alignment": "center center",
+              "overlay_opacity": 0,
+              "color_text": "#000000",
+              "text_alignment": "center",
+              "slide_heading": "Our politicians and environmental protection agencies will safeguard our well-being over the profit-and-loss statements of corporations. Our investments will take into account environmental and social goals just as much as a dollar return on investment. Petrochemical and pesticide companies will no longer exist. Marginalized, low-income, communities of color will no longer have toxic waste facilities dumped disproportionally on them: there will be no toxic waste; environmental racism will be eradicated.",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "1594589449592": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/our_vision_6.png",
+              "alignment": "center center",
+              "overlay_opacity": 0,
+              "color_text": "#000000",
+              "text_alignment": "center",
+              "slide_heading": "In the sustainable future we imagine, all decisions will take into account the impacts on the planet and people, not just the bottom line or delivery speed. As a part of the circular economy, our stuff will be designed from the beginning to perform better, last longer, be refurbished and reused. We won't have to worry about what to buy, because toxic and unsustainable products won't be sold, and companies that don’t share the values of people and planet won’t exist.",
+              "button_label": "",
+              "button_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1594585435407-0",
+          "1594585435407-1",
+          "1594588130260",
+          "1594588430923",
+          "1594588512723",
+          "1594589449592"
+        ],
+        "settings": {
+          "slider_height": "adapt",
+          "slider_autorotate": false,
+          "slider_autorotate_rate": 9,
+          "slider_home_transition": "slide",
+          "text_size": "small"
+        }
+      },
+      "smk_product_blocks_top": {
+        "type": "smk_product_blocks_top",
+        "settings": {
+          "show_product_blocks_above_buybox": false
+        }
+      },
+      "smk_product_blocks_bottom": {
+        "type": "smk_product_blocks_bottom",
+        "settings": {
+          "show_product_blocks_below_buybox": false
+        }
+      },
+      "smk_product_blocks_footer": {
+        "type": "smk_product_blocks_footer",
+        "settings": {
+          "show_product_blocks_footer": false
+        }
       }
     },
     "content_for_index": [
@@ -588,6 +747,7 @@
       "1593382705482",
       "1593383031146",
       "1590844865672",
+      "1594585435407",
       "1590525272796",
       "1590525633779",
       "1593388472180",

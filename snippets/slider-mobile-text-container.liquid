@@ -1,0 +1,19 @@
+{%- assign show_link_button = false -%}
+{%- if button_label != blank and button_link != blank -%}
+{%- assign show_link_button = true -%}
+{%- endif -%}
+{%- unless slide_heading == blank and show_link_button == false -%}
+<div class="slides__text-content slides__text-content--mobile text-center" data-mobile-slide-text="{{ forloop.index0 }}"
+  data-text-mobile>
+  {%- unless slide_heading == blank -%}
+  <h2 class="slides__title slides__title--mobile slides__title--{{ section.settings.text_size }} h1">
+    {{ slide_heading | escape }}
+  </h2>
+  {%- endunless -%}
+  {%- if show_link_button -%}
+  <a href="{{ button_link }}" class="slides__btn slides__btn--mobile btn">
+    {{ button_label | escape }}
+  </a>
+  {%- endif -%}
+</div>
+{%- endunless -%}

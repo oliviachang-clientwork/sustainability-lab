@@ -1,4 +1,5 @@
-<div class="grid">
+
+<!--smk-page-resources-top-section-start-->{%- if page.handle == 'resources' -%}{%- section 'smk_blocks_top_resources' -%}{%- endif -%}<!--smk-page-resources-top-section-end--><div class="grid">
 
   <div class="grid__item post-large--two-thirds push--post-large--one-sixth">
 
@@ -10,8 +11,10 @@
       {{ page.content }}
     </div>
 
-      {% section 'gallery.liquid' %}
+    {% section 'custom-blocks' %}
     
   </div>
 
 </div>
+
+<!--smk-page-resources-bottom-section-start-->{%- if page.handle == 'resources' -%}{%- section 'smk_blocks_bottom_resources' -%}{%- endif -%}<!--smk-page-resources-bottom-section-end-->

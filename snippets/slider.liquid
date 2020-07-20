@@ -1,0 +1,146 @@
+{% assign slideshow_limit = 6 %}
+{% assign num_slides = 0 %}
+{% for i in (1..slideshow_limit) %}
+  {% assign imageAccessor = "image-" | append: i %}
+  {% if block.settings[imageAccessor] %}
+    {% assign num_slides = num_slides | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+{%- if settings.enable_wide_layout -%}
+  {%- assign max_width = 1280 -%}
+{%- else -%}
+  {%- assign max_width = 970 -%}
+{%- endif -%}
+{%- assign slide_width = max_width -%}
+
+{%- case block.settings.slider_height -%}
+  {%- when 'small' -%}
+    {%- assign slider_desktop_height = '400px' -%}
+    {%- assign slider_mobile_height = '250px' -%}
+  {%- when 'medium' -%}
+    {%- assign slider_desktop_height = '500px' -%}
+    {%- assign slider_mobile_height = '300px' -%}
+  {%- when 'large' -%}
+    {%- assign slider_desktop_height = '600px' -%}
+    {%- assign slider_mobile_height = '400px' -%}
+  {%- when 'adapt' -%}
+    {%- assign min_aspect_ratio = block.blocks[0].settings.image.aspect_ratio | default: 2.0 -%}
+{%- endcase -%}
+
+{%- unless block.settings.slider_height == 'adapt' -%}
+  {%- style -%}
+    #flexslider--{{ block.id }} .slides__image,
+    #flexslider--{{ block.id }} .slides svg {
+      height: {{ slider_desktop_height }};
+    }
+
+    @media screen and (max-width: 768px) {
+      #flexslider--{{ block.id }} .slides__image,
+      #flexslider--{{ block.id }} .slides svg {
+        height: {{ slider_mobile_height }};
+      }
+    }
+  {%- endstyle -%}
+{%- endunless -%}
+
+{%- if num_slides > 0 -%}
+  {%- assign arrow_offset = num_slides | times: 10 | plus: 60 -%}
+  {%- style -%}
+    .slider__controls-button--prev {
+      left: calc(50% - {{ arrow_offset }}px);
+    }
+    .slider__controls-button--next {
+      right: calc(50% - {{ arrow_offset }}px);
+    }
+    {%- if block.settings.slider_height == 'adapt' -%}
+      {%- if block.settings.slider_home_transition == 'fade' -%}
+        #flexslider--{{ block.id }} .slides {
+          padding-top: {{ 100.0 | divided_by: min_aspect_ratio }}%;
+        }
+      {%- else -%}
+        #flexslider--{{ block.id }} .flex-viewport {
+          padding-top: {{ 100.0 | divided_by: min_aspect_ratio }}%;
+        }
+      {%- endif -%}
+    {%- endif -%}
+  {%- endstyle -%}
+  <div class="index-section slideshow-section"
+       role="region"
+       tabindex="-1"
+       aria-label="slideshow"
+       aria-describedby="slideshow-info">
+    <div class="flexslider flexslider--{{ block.settings.slider_home_transition }}{% if block.settings.slider_height ==  'adapt' %} flexslider--adapt{% endif %}"
+         id="flexslider--{{ block.id }}"
+         data-section-id="{{ block.id }}"
+         data-section-type="slideshow-section"
+         data-transition="{{ block.settings.slider_home_transition }}"
+         data-autoplay="{{ block.settings.slider_autorotate }}"
+         data-speed="{{ block.settings.slider_autorotate_rate | times: 1000 }}"
+         data-slide-nav-a11y="{{ 'home_page.slideshow.load_slide' | t: slide_number: '[slide_number]' }}"
+         data-slide-nav-active-a11y="{{ 'home_page.slideshow.active_slide' | t: slide_number: '[slide_number]' }}">
+      <ul class="slides supports-js">
+        {%- for i in (1..slideshow_limit) -%}
+          {% assign imageAccessor = "image-" | append: i %}
+          {% if block.settings[imageAccessor] %}
+            {% assign colorTextAccessor = "color_text-" | append: i %}
+            {% assign overlayOpacityAccessor = "overlay_opacity-" | append: i %}
+            {% assign alignmentAccessor = "alignment-" | append: i %}
+            {% assign buttonLabelAccessor = "button_label-" | append: i %}
+            {% assign buttonLinkAccessor = "button_link-" | append: i %}
+            {% assign slideHeadingAccessor = "slide_heading-" | append: i %}
+            {% assign textAlignmentAccessor = "text_alignment-" | append: i %}
+            {% include 'slider-block' image: block.settings[imageAccessor], color_text: block.settings[colorTextAccessor], overlay_opacity: block.settings[overlayOpacityAccessor], alignment: block.settings[alignmentAccessor], button_label: block.settings[buttonLabelAccessor], button_link: block.settings[buttonLinkAccessor], slide_heading: block.settings[slideHeadingAccessor], text_alignment: block.settings[textAlignmentAccessor], text_size: block.settings.text_size, forloop: forloop %}
+          {% endif %}
+        {%- endfor -%}
+      </ul>
+      <!-- fix -->
+      <noscript>
+        {{ block.blocks[0].settings.image | img_url: '1280x', scale: 2 | img_tag: block.settings.image.alt }}
+      </noscript>
+    </div>
+    {%- if num_slides > 1 -%}
+      <div class="slider__controls-container" data-slider-controls>
+        {%- if block.settings.slider_autorotate -%}
+          <button class="slider__controls-button slider__controls-button--pause"
+                  aria-live="polite"
+                  aria-label="{{ 'home_page.slideshow.pause' | t }}"
+                  aria-pressed="false"
+                  data-label-pause="{{ 'home_page.slideshow.pause' | t }}"
+                  data-label-play="{{ 'home_page.slideshow.play' | t }}"
+                  data-slider-pause>
+            <span class="icon icon-pause" aria-hidden="true"></span>
+            <span class="icon icon-play" aria-hidden="true"></span>
+          </button>
+        {%- endif -%}
+        <ul class="slider-navigation">
+          <li>
+            <button class="slider__controls-button slider__controls-button--prev" aria-label="{{ 'home_page.slideshow.previous_slide' | t }}" data-slider-navigation data-slider-prev>
+              <span class="icon icon-arrow-left" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li>
+            <button class="slider__controls-button slider__controls-button--next" aria-label="{{ 'home_page.slideshow.next_slide' | t }}" data-slider-navigation>
+              <span class="icon icon-arrow-right" aria-hidden="true"></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    {%- endif -%}
+    <div class="slideshow__mobile-text-container">
+      {% for i in (1..slideshow_limit) %}
+        {% assign imageAccessor = "image-" | append: i %}
+        {% if block.settings[imageAccessor] %}
+          {% assign colorTextAccessor = "color_text-" | append: i %}
+          {% assign overlayOpacityAccessor = "overlay_opacity-" | append: i %}
+          {% assign alignmentAccessor = "alignment-" | append: i %}
+          {% assign buttonLabelAccessor = "button_label-" | append: i %}
+          {% assign buttonLinkAccessor = "button_link-" | append: i %}
+          {% assign slideHeadingAccessor = "slide_heading-" | append: i %}
+          {% assign textAlignmentAccessor = "text_alignment-" | append: i %}
+          {% include 'slider-mobile-text-container' image: block.settings[imageAccessor], color_text: block.settings[colorTextAccessor], overlay_opacity: block.settings[overlayOpacityAccessor], alignment: block.settings[alignmentAccessor], button_label: block.settings[buttonLabelAccessor], button_link: block.settings[buttonLinkAccessor], slide_heading: block.settings[slideHeadingAccessor], text_alignment: block.settings[textAlignmentAccessor], text_size: block.settings.text_size, forloop: forloop %}
+        {% endif %}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}

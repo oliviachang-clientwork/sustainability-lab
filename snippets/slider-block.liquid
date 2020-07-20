@@ -1,0 +1,54 @@
+{%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+{%- if image.width < max_width -%}
+{%- assign slide_width = image.width -%}
+{%- endif -%}
+
+{%- style -%}
+#slide--{{ block.id }}, #slide--{{ block.id }}_clone {
+color: {{ color_text }};
+}
+#slide--{{ block.id }}:not(.slide-hide)::before, #slide--{{ block.id }}_clone:not(.slide-hide)::before {
+opacity: {{ overlay_opacity | divided_by: 100.00 }};
+}
+{%- endstyle -%}
+
+<li id="slide--{{ block.id }}" class="slides__slide slide-hide" data-slider-item
+  data-flexslider-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+  {%- if image != blank -%}
+  <img class="slides__image lazyload{% unless forloop.first == true %} lazypreload{% endunless %}"
+    src="{{ image | img_url: '300x300' }}" data-src="{{ img_url }}"
+    data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]"
+    data-aspectratio="{{ image.aspect_ratio }}" data-sizes="auto" style="{%- if slide_width <= max_width -%}
+                             {%- assign min_width = slide_width | times: 100 | divided_by: max_width -%}
+                             min-width: {{ min_width }}%;
+                           {%- endif -%}
+                           object-position: {{ alignment }};" alt="{{ image.alt | escape }}">
+  {%- else -%}
+  <span>
+    {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+    {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+  </span>
+  {%- endif -%}
+
+  {%- assign show_link_button = false -%}
+  {%- if button_label != blank and button_link != blank -%}
+  {%- assign show_link_button = true -%}
+  {%- endif -%}
+  {%- unless slide_heading == blank and show_link_button == false -%}
+  <div class="slides__text-content text-{{ text_alignment }}">
+    <div class="slides-text-content-wrapper-{{ text_alignment }}">
+      {%- unless slide_heading == blank -%}
+      <h2 class="slides__title slides__title--{{ text_size }} h1">
+        {{ slide_heading | escape }}
+      </h2>
+      {%- endunless -%}
+      {%- if show_link_button -%}
+      <a href="{{ button_link }}" class="slides__btn btn">
+        {{ button_label | escape }}
+      </a>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- endunless -%}
+</li>

@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="no-js">
 <head>
+ {%- render 'layouthub_header' -%}
 
   <!-- Basic page needs ================================================== -->
   <meta charset="utf-8">
@@ -30,6 +31,7 @@
   <!-- CSS ================================================== -->
   {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  <!-- Custom SCSS -->
   {{ 'custom.scss.css' | asset_url | stylesheet_tag }}
 
   <script>
@@ -68,13 +70,12 @@
   </script>
 
   <!-- Header hook for plugins ================================================== -->
-  {{ content_for_header }}
+  {{content_for_header}}
+ 
 
   {{ 'jquery-2.2.3.min.js' | asset_url | script_tag }}
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
-
-  <script src="https://use.fontawesome.com/b681222c7e.js"></script>
 
   {% comment %}
     If you store has customer accounts disabled, you can remove the following JS file
@@ -85,21 +86,23 @@
 
  
 {% render 'pagefly-header' %}
- </head> 
+ {% include 'booster-common' %}
+{{ 'smk-sections.css' | asset_url | stylesheet_tag }}
+</head> 
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}">
 
-  {% section 'header' %}
+  {% unless template == 'page.smarketly-landing-without-hf' %}{% section 'header' %}{% endunless %}
 
   <main class="wrapper main-content" role="main">
     <div class="grid">
         <div class="grid__item">
-          {{ content_for_layout }}
+          <!--LayoutHub-Workspace-Start-->{{ content_for_layout }}<!--LayoutHub-Workspace-End-->
         </div>
     </div>
   </main>
 
-  {% section 'footer' %}
+  {% unless template == 'page.smarketly-landing-without-hf' %}{% section 'footer' %}{% endunless %}
 
   {%- if request.page_type == 'index' -%}
     <p id="slideshow-info" class="visually-hidden" aria-hidden="true">
@@ -118,5 +121,7 @@
   </ul>
 
   {{ 'theme.js' | asset_url | script_tag }}
+{% include 'booster-message' %}
+<script src="{{ 'smk-sections.js' | asset_url }}" defer="defer"></script>
 </body>
 </html>

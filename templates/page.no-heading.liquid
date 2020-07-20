@@ -2,11 +2,13 @@
 
   <div class="grid__item post-large--two-thirds push--post-large--one-sixth">
 
+    {% section 'custom-blocks-above' %}
+    
     <div class="rte">
       {{ page.content }}
     </div>
 
-    {% section 'custom-blocks' %}
+    {% section 'custom-blocks-below' %}
 
   </div>
 

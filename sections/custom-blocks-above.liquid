@@ -9,7 +9,7 @@
             {% include 'image-with-text' %}
           {% when 'custom-html' %}
             <div class="page-width">
-              {{ block.settings.custom_html }}
+              {{ block.settings.custom-html }}
             </div>
           {% when 'richtext' %}
             {{ block.settings.richtext }}
@@ -28,7 +28,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "This is the global custom blocks handler. The block won't appear until the page handler is set."
+      "content": "These blocks appear above the main content. The block won't appear until the page handler is set."
     }
   ],
   "blocks": [

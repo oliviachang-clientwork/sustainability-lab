@@ -6,11 +6,13 @@
       <h1 class="section-header--title">{{ page.title }}</h1>
     </div>
 
+    {% section 'custom-blocks-above' %}
+
     <div class="rte">
       {{ page.content }}
     </div>
 
-    {% section 'custom-blocks' %}
+    {% section 'custom-blocks-below' %}
 
     <div>
       

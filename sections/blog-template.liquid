@@ -39,6 +39,7 @@
             Add a surrounding div with class 'rte' to anything that will come from the rich text editor.
             Since this is just a listing page, you can either use the excerpt or truncate the full article.
           {% endcomment %}
+
           <div class="rte">
             {% if article.image %}
               {% capture img_id %}ArticleImage-{{ section.id }}--{{ article.image.id }}{% endcapture %}

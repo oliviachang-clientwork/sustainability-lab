@@ -2,6 +2,8 @@
   <h1 class="section-header__title">{{ page.title }}</h1>
 </header>
 
+{% section 'custom-blocks-above' %}
+
 {% comment %}
   Regular page content goes here.
 {% endcomment %}
@@ -9,4 +11,4 @@
   {{ page.content }}
 </div>
 
-{% section 'custom-blocks' %}
+{% section 'custom-blocks-below' %}

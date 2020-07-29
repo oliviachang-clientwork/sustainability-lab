@@ -177,6 +177,12 @@
       },
       {
         "type": "color",
+        "id": "grid_link_title",
+        "label": "Product and collection title underneath product",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
         "id": "color_borders",
         "label": {
           "da": "Linjer og kanter",
@@ -272,6 +278,44 @@
           "zh-TW": "按鈕文字"
         },
         "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Buttons on product page"
+      },
+      {
+        "type": "color",
+        "id": "add_to_cart_button",
+        "label": "Add to cart button",
+        "default": "#06356a"
+      },
+      {
+        "type": "color",
+        "id": "buy_it_now_button",
+        "label": "Buy it now button",
+        "default": "#06356a"
+      },
+      {
+        "type": "header",
+        "content": "Buttons On Cart Page"
+      },
+      {
+        "type": "color",
+        "id": "continue_shopping_button",
+        "label": "Continue shopping button",
+        "default": "#06356a"
+      },
+      {
+        "type": "color",
+        "id": "update_cart_button",
+        "label": "Update cart button",
+        "default": "#06356a"
+      },
+      {
+        "type": "color",
+        "id": "check_out_button",
+        "label": "Checkout button",
+        "default": "#06356a"
       },
       {
         "type": "header",

@@ -1,0 +1,50 @@
+<div class="page-width feature-row">
+  {% capture image_layout %}
+  <div class="feature-row__item">
+    {% if block.settings.image != blank %}
+    <noscript>
+      {{ block.settings.image | img_url: '640x640' | img_tag: block.settings.image.alt }}
+    </noscript>
+
+    {% capture img_id %}FeatureRowImage--{{ block.id }}{% endcapture %}
+    {% capture img_wrapper_id %}FeatureRowImageWrapper--{{ block.id }}{% endcapture %}
+    {% include 'image-style' with image: block.settings.image, width: 700, height: 640, wrapper_id: img_wrapper_id, img_id: img_id %}
+    {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+    <div id="{{ img_wrapper_id }}" class="feature-row__image-wrapper supports-js">
+      <div style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;">
+        <img id="{{ img_id }}" class="feature-row__image lazyload" src="{{ block.settings.image | img_url: '300x300' }}"
+          data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+          data-aspectratio="{{ block.settings.image.aspect_ratio }}" data-sizes="auto"
+          alt="{{ block.settings.image.alt | escape }}">
+      </div>
+    </div>
+    {% else %}
+    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+  </div>
+  {% endcapture %}
+
+  <div class="feature-row">
+    {% if block.settings.layout == 'left' %}
+    {{ image_layout }}
+    {% endif %}
+
+    <div class="feature-row__item feature-row__text feature-row__text--{{ block.settings.layout }}">
+      {% if block.settings.title != blank %}
+      <h2>{{ block.settings.title | escape }}</h2>
+      {% endif %}
+      {% if block.settings.text != blank %}
+      <div class="rte featured-row__subtext">{{ block.settings.text }}</div>
+      {% endif %}
+      {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+      <a href="{{ block.settings.button_link }}" class="btn">
+        {{ block.settings.button_label | escape }}
+      </a>
+      {% endif %}
+    </div>
+
+    {% if block.settings.layout == 'right' %}
+    {{ image_layout }}
+    {% endif %}
+  </div>
+</div>

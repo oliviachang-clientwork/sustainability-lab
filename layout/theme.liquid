@@ -117,6 +117,26 @@
     <li id="a11y-new-window-external-message">{{ 'general.accessibility.new_window_and_external' | t }}</li>
   </ul>
 
+  <!-- Tooltips -->
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+
   {{ 'theme.js' | asset_url | script_tag }}
+
+  <script>
+    $('strong').each(function () { 
+      const text = $(this).text();
+      if (text.includes('[')) {
+        const tooltipContent = text.split('[').pop().split(']')[0];
+        tippy(this, {
+          content: tooltipContent,
+          theme: 'default'
+        });
+        $(this).text(text.substring(0, text.indexOf('[')))
+        $(this).css('cursor', 'pointer')
+      }
+    })
+
+  </script>
 </body>
 </html>

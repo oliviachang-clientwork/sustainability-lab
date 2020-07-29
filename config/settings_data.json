@@ -1,5 +1,11 @@
 {
   "current": {
+    "grid_link_title": "#000000",
+    "add_to_cart_button": "#06356a",
+    "buy_it_now_button": "#06356a",
+    "continue_shopping_button": "#06356a",
+    "update_cart_button": "#06356a",
+    "check_out_button": "#06356a",
     "enable_wide_layout": true,
     "color_topbar_bg": "#ffffff",
     "color_body_bg": "#ffffff",

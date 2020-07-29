@@ -186,13 +186,8 @@
           {% if section.settings.cart_notes_enable %}
             {% assign noteSize = cart.note | size %}
             <div class="grid__item post-large--five-twelfths">
-              <button type="button" class="text-link cart__note-add{% if noteSize > 0 %} is-hidden{% endif %}">
-                {{ 'cart.label.add_note' | t }}
-              </button>
-              <div class="cart__note{% if noteSize > 0 %} is-active{% endif %}">
-                <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
-                <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
-              </div>
+              {{section.settings.cart_notes_text}}
+              <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
             </div>
           {% endif %}
           <div class="grid__item text-right{% if section.settings.cart_notes_enable %} post-large--seven-twelfths{% endif %}">
@@ -228,10 +223,10 @@
             {% comment %}
               Continue shopping button
             {% endcomment %}
-            <a class="btn btn--secondary" href="{{ routes.all_products_collection_url }}">{{ 'cart.general.continue_shopping' | t }}</a>
+            <a class="btn btn--secondary continue-shopping-button-custom" href="{{ routes.all_products_collection_url }}">{{ 'cart.general.continue_shopping' | t }}</a>
 
-            <button type="submit" name="update" class="btn btn--secondary update-cart">{{ 'cart.general.update' | t }}</button>
-            <button type="submit" name="checkout" class="btn">{{ 'cart.general.checkout' | t }}</button>
+            <button type="submit" name="update" class="btn btn--secondary update-cart update-cart-button-custom">{{ 'cart.general.update' | t }}</button>
+            <button type="submit" name="checkout" class="btn check-out-button-custom">{{ 'cart.general.checkout' | t }}</button>
 
             {% if additional_checkout_buttons %}
               <div class="cart__additional_checkout">{{ content_for_additional_checkout_buttons }}</div>
@@ -304,6 +299,12 @@
         "zh-CN": "启用订单备注",
         "zh-TW": "啟用訂單備註"
       }
+    },
+    {
+      "type": "richtext",
+      "id": "cart_notes_text",
+      "label": "Cart Notes Text",
+      "default": "<p>Please note we use reuse existing shipping boxes and mailers (where possible) as a core sustainable business practice. If for any reason you prefer to receive a new shipping box/mailer, please let us know in the notes section.</p>"
     }
   ]
 }

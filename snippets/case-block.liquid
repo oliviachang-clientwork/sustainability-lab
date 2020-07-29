@@ -1,0 +1,24 @@
+{% case block.type %}
+  {% when 'gallery' %}
+    {% include 'gallery' %}
+  {% when 'slideshow' %}
+    {% include 'slider' %}
+  {% when 'image-with-text' %}
+    {% include 'image-with-text' %}
+  {% when 'custom-html' %}
+    <div class="page-width">
+      {{ block.settings.custom-html }}
+    </div>
+  {% when 'richtext' %}
+    {{ block.settings.richtext }}
+  {% when 'heading-1' %}
+    <h1>{{ block.settings.heading }}</h1>
+  {% when 'heading-2' %}
+    <h2>{{ block.settings.heading }}</h2>
+  {% when 'heading-3' %}
+    <h3>{{ block.settings.heading }}</h3>
+  {% when 'divider' %}
+    <hr>
+  {% when 'spacer' %}
+    <div style="height: {{block.settings.size}}px;"></div>
+{% endcase %}

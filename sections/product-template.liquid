@@ -71,9 +71,10 @@
 
           {% if product.images.size > 1 %}
           
-            <div class="product-images" id="ProductThumbs">
+            <div class="slick-slider" id="ProductThumbs">
               {% for image in product.images %}
-              <a data-image-id="{{ image.id }}" href="{{ image.src | img_url: '1024x1024' }}" class="product-single__thumbnail">
+              <a data-image-id="{{ image.id }}" href="{{ image.src | img_url: '1024x1024' }}"
+                class="product-single__thumbnail product-image-link">
                 <img src="{{ image.src | img_url: 'grande' }}" alt="{{ image.alt | escape }}">
               </a>
               {% endfor %}

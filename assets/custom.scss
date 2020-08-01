@@ -1,29 +1,3 @@
-// PRODUCT IMAGES - HORIZONTAL
-.product-images {
-  display: block;
-  width: 100%;
-  white-space: nowrap;
-  overflow-x: auto;
-  margin-bottom: 50px;
-}
-
-.product-images a {
-  display: inline;
-}
-
-$num-product-img-display-at-once: 4;
-$product-img-width: percentage(1 / $num-product-img-display-at-once);
-$product-image-margin: 20px;
-
-.product-images img {
-  width: calc(#{$product-img-width} - #{$product-image-margin});
-  margin-right: $product-image-margin;
-}
-
-.product-images a:last-child img {
-  margin-right: 0;
-}
-
 // TABS
 $unselected-tab-border-bottom: #acacac;
 $tab-padding-bottom: 6px;
@@ -115,7 +89,27 @@ ul.product-tabs:after {
   object-fit: cover;
 }
 
+// Tooltip
+
 .tippy-tooltip.default-theme {
   background-color: white;
   color: black;
+}
+
+// Product Images Slider
+
+.product-image-link {
+  padding: 10px;
+  &:focus {
+    outline: none
+  }
+}
+
+.slick-slider {
+  width: 90%;
+  margin: auto;
+}
+
+.slick-prev:before, .slick-next:before {
+  color:black !important;
 }

@@ -5818,3 +5818,33 @@ theme.equalHeights = function ($selector) {
 
 // Initialize theme's JS on docready
 $(theme.init);
+
+$(".slick-slider").slick({
+  infinite: false,
+  arrows: true,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+      },
+    },
+    {
+      breakpoint: 500,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 200,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+  ],
+});

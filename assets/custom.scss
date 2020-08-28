@@ -113,3 +113,19 @@ ul.product-tabs:after {
 .slick-prev:before, .slick-next:before {
   color:black !important;
 }
+
+.display-mobile {
+  @media (min-width: 768px) {
+    display: none
+  }
+}
+
+.display-comp {
+  @media (max-width: 768px) {
+    display: none
+  }
+}
+
+span.grid-link__image.grid-link__image--collection {
+    height: auto !important;
+}

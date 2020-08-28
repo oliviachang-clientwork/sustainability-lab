@@ -10,7 +10,7 @@
 .exYsxy[data-container] .sc-psDhf { padding-left: 15px; padding-right: 15px; width: auto; margin: auto; box-sizing: border-box; }
 .exYsxy[data-parallax="true"] { background: none !important; }
 .exYsxy .pf-parallax__img { position: absolute; object-fit: cover; top: 0px; left: 0px; width: 100%; height: 100%; z-index: -1; }
-.gYSgcm { cursor: pointer; width: 100%; height: 100%; padding: 10px 15px; text-decoration: none; color: black; text-align: left; outline: none; display: block; position: relative; -webkit-appearance: none; }
+.gYSgcm { cursor: pointer; width: 100%; height: 100%; padding: 10px 15px; text-decoration: none; color: black; text-align: left; outline: none; display: block; position: relative; appearance: none; }
 .gYSgcm > svg { margin-right: 5px; }
 .gYSgcm > i { margin-right: 5px; }
 .gYSgcm div { padding: 1.5rem 0px; }
@@ -40,16 +40,6 @@
 }
 .bjKdkd__parallax { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
 .bjKdkd { padding: 15px 0px; position: relative; }
-.hdxfhd { display: block; margin-right: 10px; float: left; }
-.hdxfhd[contenteditable="true"] { user-select: text; }
-.hdxfhd { vertical-align: baseline; word-break: break-word; }
-.hdxfhd:focus { outline: none; }
-.hdxfhd::after { display: inline; }
-.hHSLcU > span:last-child { line-height: inherit; display: block; }
-#editor-dnd-wrapper .hHSLcU span + span[contenteditable] { display: block; }
-#editor-dnd-wrapper .hHSLcU span + span[contenteditable]:empty::after { display: inline; }
-.hHSLcU ol, .hHSLcU ul { list-style-position: inside; }
-.hHSLcU blockquote { font-size: inherit; }
 .cbrLgP > span:last-child { line-height: inherit; display: block; margin-right: 0px !important; }
 #editor-dnd-wrapper .cbrLgP span + span[contenteditable] { display: block; }
 #editor-dnd-wrapper .cbrLgP span + span[contenteditable]:empty::after { display: inline; }
@@ -111,9 +101,13 @@
 						/* PageFly Styles */
 						
 @media all {
-	.__pf .pf-9b24359f {
-		font-size: 2.1em;
-		 line-height: 1em;
+	.__pf .pf-31b35ab2 {
+		margin-top: -50px;
+		 margin-right: 0px;
+	}
+	.__pf .pf-75ceb642 {
+		width: 100%;
+		 height: auto;
 	}
 	.__pf .pf-08848707 {
 		height: 650px;
@@ -224,10 +218,16 @@
 		 color: rgb(255, 255, 255);
 		 background: rgb(6, 53, 106);
 	}
+	.__pf .pf-20346d3f {
+		margin-top: -50px;
+	}
 }
 @media only screen and (max-width: 767px) {
 	.__pf .pf-08848707 {
-		height: 500px;
+		height: 172px;
+	}
+	.__pf .pf-20346d3f {
+		padding-top: 30px;
 	}
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {

@@ -1,6 +1,8 @@
 <!doctype html>
 <html class="no-js">
 <head>
+<meta name="p:domain_verify" content="3433c196e8695b81ad2c475a78611a68"/>
+  {%- render 'layouthub_header' -%}
 
   <!-- Basic page needs ================================================== -->
   <meta charset="utf-8">
@@ -87,21 +89,23 @@
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
  
 {% render 'pagefly-header' %}
- </head> 
+ {{ 'smk-sections.css' | asset_url | stylesheet_tag }}
+  {% include 'judgeme_core' %}
+</head> 
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}">
 
-  {% section 'header' %}
+  {% unless template == 'page.smarketly-landing-without-hf' %}{% section 'header' %}{% endunless %}
 
   <main class="wrapper main-content" role="main">
     <div class="grid">
         <div class="grid__item">
-          {{ content_for_layout }}
+          <!--LayoutHub-Workspace-Start-->{{ content_for_layout }}<!--LayoutHub-Workspace-End-->
         </div>
     </div>
   </main>
 
-  {% section 'footer' %}
+  {% unless template == 'page.smarketly-landing-without-hf' %}{% section 'footer' %}{% endunless %}
 
   {%- if request.page_type == 'index' -%}
     <p id="slideshow-info" class="visually-hidden" aria-hidden="true">
@@ -129,5 +133,11 @@
 
   {{ 'tippy-custom.js' | asset_url | script_tag }}
 
-</body>
+<script src="{{ 'smk-sections.js' | asset_url }}" defer="defer"></script>
+  
+ {% render 'back-to-the-top' %}
+{% include 'pointkit_snippet' %}
+ {% include 'smile-initializer' %}
+
+{% include 'subscribe-it-helper' %}</body>
 </html>

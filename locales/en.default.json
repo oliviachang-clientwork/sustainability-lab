@@ -276,7 +276,7 @@
     "general": {
       "from_html": "From {{ price }}",
       "include_taxes": "Tax included.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
+      "shipping_policy_html": "",
       "share_title": "Share this Product"
     },
     "product": {

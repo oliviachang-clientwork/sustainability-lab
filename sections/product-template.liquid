@@ -134,20 +134,21 @@
           </div>
 
         {% endif %}
-
-        <ul class="product-tabs">
+        <div class="display-comp">
+          <ul class="product-tabs">
+            {% for tab in product.metafields.tabs %}
+            <li>
+              <a href="#{{ tab[0] | split: "." | last | handleize}}">{{tab[0] | split: "." | last | strip}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          
           {% for tab in product.metafields.tabs %}
-          <li>
-            <a href="#{{ tab[0] | slice: 2, tab[0].size | handleize}}">{{tab[0] | slice: 2, tab[0].size | strip}}</a>
-          </li>
+          <div id="{{ tab[0] | split: "." | last | handleize}}">
+            {{ tab[1] }}
+          </div>
           {% endfor %}
-        </ul>
-
-        {% for tab in product.metafields.tabs %}
-        <div id="{{ tab[0] | slice: 2, tab[0].size | handleize}}">
-          {{ tab[1] }}
         </div>
-        {% endfor %}
 
         {% if section.settings.product_image_zoom_type == 'lightbox' %}
         <ul class="gallery" class="hidden">
@@ -163,6 +164,10 @@
           <span class="h3" itemprop="brand">{{ product.vendor }}</span>
         {% endif %}
         <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
+{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: true, product: product %}
+{% comment %}End automatically added Judge.me widget{% endcomment %}
+
 
         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
           {% assign variant = product.selected_or_first_available_variant %}
@@ -258,6 +263,22 @@
             </div>
           {% endunless %}
 
+          <div class="display-mobile">
+            <ul class="product-tabs">
+              {% for tab in product.metafields.tabs %}
+              <li>
+                <a href="#{{ tab[0] | split: "." | last | handleize}}-mobile">{{tab[0] | split: "." | last | strip}}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          
+            {% for tab in product.metafields.tabs %}
+            <div id="{{ tab[0] | split: "." | last | handleize}}-mobile">
+              {{ tab[1] }}
+            </div>
+            {% endfor %}
+          </div>
+
           {% if section.settings.social_sharing %}
             <hr class="hr--clear hr--small">
             <h2 class="h4">{{ 'products.general.share_title' | t }}</h2>
@@ -267,7 +288,11 @@
 
       </div>
     </div>
-  </div>
+  
+{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
+{% comment %}End automatically added Judge.me widget{% endcomment %}
+</div>
 </div>
 
 {% unless product == empty %}

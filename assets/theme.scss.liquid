@@ -1097,6 +1097,8 @@ html, body { background: $colorBody; }
   padding-bottom: 5px;
 }
 
+
+
 /*================ Module | Grid Link ================*/
 .grid-link__container {
   margin-bottom: -$gutter;
@@ -3159,4 +3161,12 @@ input.cart__quantity-selector {
     background-color: {{ settings.check_out_button }} !important;
     opacity: 0.8;
   }
+}
+/* --tim: make vertical padding less for header*/
+header.site-header {
+    padding:  0px 0; /* first number is top and bottom padding -- was 30 originally */
+}
+/* --tim: make Sign In/Login line in header slimmer too */
+.site-header--text-links {
+  margin-bottom: 0px; /* originally 15px*/
 }

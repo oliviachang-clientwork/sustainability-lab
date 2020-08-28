@@ -1,7 +1,7 @@
 {%- if block.type == "smk_big_banners" -%}{%- assign item = block.settings -%}
 {%- assign b_i = block.settings -%}
 {%- if item.show_section -%}
-<div class="shopify-section smk-content">
+<div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
   <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent sectionbigbanners{{ block.id }}">
     <div class="container{% if item.fullwidth %}-fluid{% endif %}" data-smk-section-type="smk_big_banners">
       <div class="{% if item.fullwidth %}row{% endif %} no-gutter">
@@ -10,6 +10,7 @@
             {%- assign smk_block_type = 'big_banners' -%}
             {%- assign show = smk_block_type | append: '_' | append: i | append: '_' | append: 'show' -%}
             {%- assign image = smk_block_type | append: '_' | append: i | append: '_' | append: 'image' -%}
+            {%- assign image_mobile = smk_block_type | append: '_' | append: i | append: '_' | append: 'image_mobile' -%}
             {%- assign use_parallax = smk_block_type | append: '_' | append: i | append: '_' | append: 'use_parallax' -%}
             {%- assign height1 = smk_block_type | append: '_' | append: i | append: '_' | append: 'height1' -%}
             {%- assign height2 = smk_block_type | append: '_' | append: i | append: '_' | append: 'height2' -%}
@@ -73,11 +74,22 @@
                       {%- if b_i[image] -%}{%- include "smk_get_svg" type:'image' size:'1920x1300' -%}
                       {%- else -%}{%- include "smk_get_svg" type:'image' size:'2048x800' -%}
                       {%- endif -%}
-                      {%- else -%}
-                      <img class="lazyload"
-                           src="{{ b_i[image] | img_url: "master" }}"
-                           data-mainimage="{{ b_i[image] | img_url: '100x100' | replace: '100x100', 'respimgsize' }}"
-                           alt="{{ b_i[image].alt }}">
+                    {%- else -%}
+                      {% if b_i[image_mobile] == blank %}
+                        <img class="lazyload"
+                               src="{{ b_i[image] | img_url: "master" }}"
+                               data-mainimage="{{ b_i[image] | img_url: '100x100' | replace: '100x100', 'respimgsize' }}"
+                               alt="{{ b_i[image].alt }}">
+                      {% else %}
+                           <img class="lazyload smk-big-banners-desktop-image"
+                                  src="{{ b_i[image] | img_url: "master" }}"
+                                  data-mainimage="{{ b_i[image] | img_url: '100x100' | replace: '100x100', 'respimgsize' }}"
+                                  alt="{{ b_i[image].alt }}">
+                            <img class="lazyload smk-big-banners-mobile-image"
+                                        src="{{ b_i[image_mobile] | img_url: "master" }}"
+                                        data-mainimage="{{ b_i[image_mobile] | img_url: '100x100' | replace: '100x100', 'respimgsize' }}"
+                                        alt="{{ b_i[image_mobile].alt }}">
+                      {% endif %}
                     {%- endif -%}
                     {%- endif -%}
 
@@ -197,7 +209,7 @@
 
 {%- capture image_size -%}600x{%- endcapture -%}
 {%- if item.show_section -%}
-<div class="shopify-section smk-content">
+<div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
   <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent {{ item.custom_classes }}">
     <div class="container{% if item.fullwidth %}-fluid{% endif %}">
       {%- if item.show_title -%}
@@ -280,13 +292,13 @@
 {%- if block.type == "smk_brands_slider" -%}{%- assign item = block.settings -%}
 {%- assign b_i = block.settings -%}
 {%- if item.show_section -%}
-<div class="shopify-section smk-content">
+<div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
   <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent">
     <div class="container{% if item.fullwidth %}-fluid{% endif %} smk-brands-slider-{{ block.id }}" data-smk-section-type="smk_brands_slider">
       {%- if item.show_title -%}
       <div class="smk-block-title{% if item.title_to_left %} text-left{% endif %}">
-        <h2 class="smk-title">{{ item.text1 }}</h2>
-        {%- unless item.text2 == '' -%}<div class="smk-description">{{ item.text2 }}</div>{%- endunless -%}
+        <h2 class="smk-title smk-brands-title">{{ item.text1 }}</h2>
+        {%- unless item.text2 == '' -%}<div class="smk-description smk-brands-description">{{ item.text2 }}</div>{%- endunless -%}
       </div>
       {%- endif -%}
       <div class="row smk-carousel-brands arrow-location-center-02 smk-arrow-hover slick-animated-show-js" data-slick='{"slidesToShow": {{ item.toshow }}, "slidesToScroll": {{ item.step }}, "autoplay": {{ item.module_autoplay }}, "autoplaySpeed": {{ item.delay_time }}}'>
@@ -333,7 +345,44 @@
 .smk-content .smk-brands-slider-{{ block.id }} .smk-brands-image {
     padding: 0 {{ item.images_margin }}px;
 }
+
+.smk-content .smk-brands-slider-{{ block.id }} .smk-brands-title,
+.smk-content .smk-brands-slider-{{ block.id }} h2.smk-brands-title:not(.small):not([class^="tt-title"]):not([class^="tt-collapse"]):not([class^="tt-aside"]) {
+    font-size: {{ item.title_font_size }}px;
+     line-height: {{ item.title_line_height }}px;
+     font-weight: {{ item.title_font_weight }};
+}
+
+.smk-content .smk-brands-slider-{{ block.id }} .smk-brands-description {
+    font-size: {{ item.description_font_size }}px;
+     line-height: {{ item.description_line_height }}px;
+     font-weight: {{ item.description_font_weight }};
+}
+
+.smk-content .smk-brands-slider-{{ block.id }} .slick-prev,
+.smk-content .smk-brands-slider-{{ block.id }} .slick-next {
+    background: {{ item.bgbaseco }} !important;
+    color: {{ item.arrbaseco }} !important;
+}
+.smk-content .smk-brands-slider-{{ block.id }} .slick-prev:hover,
+.smk-content .smk-brands-slider-{{ block.id }} .slick-next:hover {
+    background: {{ item.bgactiveco }} !important;
+    color: {{ item.arractiveco }} !important;
+}
+
 @media (max-width: 790px){
+    .smk-content .smk-brands-slider-{{ block.id }} .smk-brands-title,
+    .smk-content .smk-brands-slider-{{ block.id }} h2.smk-brands-title:not(.small):not([class^="tt-title"]):not([class^="tt-collapse"]):not([class^="tt-aside"]) {
+        font-size: {{ item.title_font_size_mobile }}px;
+         line-height: {{ item.title_line_height_mobile }}px;
+         font-weight: {{ item.title_font_weight_mobile }};
+    }
+
+    .smk-content .smk-brands-slider-{{ block.id }} .smk-brands-description {
+        font-size: {{ item.description_font_size_mobile }}px;
+         line-height: {{ item.description_line_height_mobile }}px;
+         font-weight: {{ item.description_font_weight_mobile }};
+    }
  .smk-content .smk-brands-slider-{{ block.id }} .smk-brands-image {
      padding: 0 {{ item.images_margin_mobile }}px;
  }
@@ -347,12 +396,13 @@
  }
  {% endunless %}
 }
+
 </style>{%- endif -%}
 
 
 {%- if block.type == "smk_custom_html" -%}{%- assign item = block.settings -%}
 {%- if item.show_section -%}
-<div class="container-indent{% unless item.topoffset %} nomargin{% endunless %}"{% if item.usebgcolor and item.usebgcolorfullwidth %} style="background: {{ item.bgco }}"{% endif %}>
+<div class="container-indent{% unless item.topoffset %} nomargin{% endunless %}"{% if item.usebgcolor and item.usebgcolorfullwidth %} style="background: {{ item.bgco }}"{% endif %} data-smk-section-location="{{ item.section_location }}">
   <div{% unless item.fullwidth2 %} class="container{% if item.fullwidth %}-fluid{% endif %}"{% endunless %}{% if item.usebgcolor and item.usebgcolorfullwidth == false %} style="background: {{ item.bgco }}"{% endif %}>
     {%- if item.data contains '[images]' -%}{% include 'portfolio-widget' value: item.data %}
     {%- else -%}{{ item.data }}
@@ -365,91 +415,48 @@
 
 {%- if block.type == "smk_icon_banners" -%}{%- assign item = block.settings -%}
 {%- if item.show_section -%}
-<div class="shopify-section smk-content">
+<div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}" data-smk-section-type="smk_icon_banners">
 <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent {{ item.custom_classes }}"{% if item.use_background %} style="background:{{ item.background_color }}"{% endif %}>
   <div class="container{% if item.fullwidth %}-fluid{% endif %} smk-icon-banners-{{ block.id }}">
-    <div class="row{% if item.items_always_in_center %} justify-content-center{% endif %} smk-services-listing{% if item.use_background %} smk-layout-02{% endif %}">
+    <div class="row{% if item.items_always_in_center %} justify-content-center{% endif %} smk-services-listing{% if item.use_background %} smk-layout-02{% endif %}{% if item.module_autoplay %} smk-single-icon-banner{% endif %}" {% if item.module_autoplay %}data-slick='{"autoplay": true, "autoplaySpeed": {{ item.delay_time }}}'{% endif %}>
       {%- assign b_i = block.settings -%}
       {%- assign image_size = '60x' -%}
       {%- if item.use_fixed_image_height and item.fit_fixed_image -%}
       {%- assign image_size = '400x' -%}
       {%- endif %}
-      {%- if b_i.icon_banners_1_show_banner -%}
-      <div class="col-xs-12 col-md-6 col-lg-{{ item.items }}" {{ block.shopify_attributes }}>
-        <a href="{{ b_i.icon_banners_1_link }}" class="smk-services-block{% if item.vertical %} smk-services-block-vertical{% endif %}" data-hovercolors>
-          {%- if b_i.icon_banners_1_show_icon != 'none' -%}
-          <div class="smk-col-icon{% if b_i.icon_banners_1_show_icon == 'image' %} smk-col-icon-image{% endif %}">
-            {%- if b_i.icon_banners_1_show_icon == 'image' -%}
-            <img src="{{ b_i.icon_banners_1_image | img_url: image_size }}" alt="{{ b_i.icon_banners_1_image.alt }}">
-            {%- else -%}
-            <i class="fas fa-{{ b_i.icon_banners_1_icon }}" style="color: {% if item.same_iconcolor %}{{ item.icon_color }}{% else %}{{ b_i.icon_banners_1_icon_color }}{% endif %}"></i>
-            {%- endif -%}
-          </div>
+
+      {%- for i in (1..4) -%}
+          {%- assign smk_block_type = 'icon_banners' -%}
+          {%- assign show_banner = smk_block_type | append: '_' | append: i | append: '_' | append: 'show_banner' -%}
+          {%- assign link = smk_block_type | append: '_' | append: i | append: '_' | append: 'link' -%}
+          {%- assign show_icon = smk_block_type | append: '_' | append: i | append: '_' | append: 'show_icon' -%}
+          {%- assign icon = smk_block_type | append: '_' | append: i | append: '_' | append: 'icon' -%}
+          {%- assign icon_color = smk_block_type | append: '_' | append: i | append: '_' | append: 'icon_color' -%}
+          {%- assign image = smk_block_type | append: '_' | append: i | append: '_' | append: 'image' -%}
+          {%- assign text1 = smk_block_type | append: '_' | append: i | append: '_' | append: 'text1' -%}
+          {%- assign text2 = smk_block_type | append: '_' | append: i | append: '_' | append: 'text2' -%}
+          {%- if b_i[show_banner] -%}
+                <div class="col-xs-12 col-md-6 col-lg-{{ item.items }}" {{ block.shopify_attributes }}>
+                        <{% if b_i[link] != blank %}a href="{{ b_i[link] }}"{% else %}div{% endif %} class="smk-services-block{% if item.vertical %} smk-services-block-vertical{% endif %}" data-hovercolors>
+                          {%- if b_i[show_icon] != 'none' -%}
+                          <div class="smk-col-icon{% if b_i[show_icon] == 'image' %} smk-col-icon-image{% endif %}">
+                            {%- if b_i[show_icon] == 'image' -%}
+                            <img src="{{ b_i[image] | img_url: image_size }}" alt="{{ b_i[image].alt }}">
+                            {%- else -%}
+                            <i class="fas fa-{{ b_i[icon] }}" style="color: {% if item.same_iconcolor %}{{ item.icon_color }}{% else %}{{ b_i[icon_color] }}{% endif %}"></i>
+                            {%- endif -%}
+                          </div>
+                          {%- endif -%}
+                          <div class="smk-col-description">
+                            <h4 class="smk-title" style="color:{{ item.title_color }};" data-c="{{ item.title_color }}" data-ac="{{ item.title_hover_color }}">{{ b_i[text1] }}</h4>
+                            {% unless b_i[text2] == '' %}<p style="color: {{ item.desc_color }}">{{ b_i[text2] }}</p>{% endunless %}
+                          </div>
+                        </{% if b_i[link] != blank %}a{% else %}div{% endif %}>
+                      </div>
           {%- endif -%}
-          <div class="smk-col-description">
-            <h4 class="smk-title" style="color:{{ item.title_color }};" data-c="{{ item.title_color }}" data-ac="{{ item.title_hover_color }}">{{ b_i.icon_banners_1_text1 }}</h4>
-            {% unless b_i.icon_banners_1_text2 == '' %}<p style="color: {{ item.desc_color }}">{{ b_i.icon_banners_1_text2 }}</p>{% endunless %}
-          </div>
-        </a>
-      </div>
-      {%- endif -%}
-      {%- if b_i.icon_banners_2_show_banner -%}
-      <div class="col-xs-12 col-md-6 col-lg-{{ item.items }}" {{ block.shopify_attributes }}>
-        <a href="{{ b_i.icon_banners_2_link }}" class="smk-services-block{% if item.vertical %} smk-services-block-vertical{% endif %}" data-hovercolors>
-          {%- if b_i.icon_banners_2_show_icon != 'none' -%}
-          <div class="smk-col-icon{% if b_i.icon_banners_2_show_icon == 'image' %} smk-col-icon-image{% endif %}">
-            {%- if b_i.icon_banners_2_show_icon == 'image' -%}
-            <img src="{{ b_i.icon_banners_2_image | img_url: image_size }}" alt="{{ b_i.icon_banners_2_image.alt }}">
-            {%- else -%}
-            <i class="fas fa-{{ b_i.icon_banners_2_icon }}" style="color: {% if item.same_iconcolor %}{{ item.icon_color }}{% else %}{{ b_i.icon_banners_2_icon_color }}{% endif %}"></i>
-            {%- endif -%}
-          </div>
-          {%- endif -%}
-          <div class="smk-col-description">
-            <h4 class="smk-title" style="color:{{ item.title_color }};" data-c="{{ item.title_color }}" data-ac="{{ item.title_hover_color }}">{{ b_i.icon_banners_2_text1 }}</h4>
-            {% unless b_i.icon_banners_2_text2 == '' %}<p style="color: {{ item.desc_color }}">{{ b_i.icon_banners_2_text2 }}</p>{% endunless %}
-          </div>
-        </a>
-      </div>
-      {%- endif -%}
-      {%- if b_i.icon_banners_3_show_banner -%}
-      <div class="col-xs-12 col-md-6 col-lg-{{ item.items }}" {{ block.shopify_attributes }}>
-        <a href="{{ b_i.icon_banners_3_link }}" class="smk-services-block{% if item.vertical %} smk-services-block-vertical{% endif %}" data-hovercolors>
-          {%- if b_i.icon_banners_3_show_icon != 'none' -%}
-          <div class="smk-col-icon{% if b_i.icon_banners_3_show_icon == 'image' %} smk-col-icon-image{% endif %}">
-            {%- if b_i.icon_banners_3_show_icon == 'image' -%}
-            <img src="{{ b_i.icon_banners_3_image | img_url: image_size }}" alt="{{ b_i.icon_banners_3_image.alt }}">
-            {%- else -%}
-            <i class="fas fa-{{ b_i.icon_banners_3_icon }}" style="color: {% if item.same_iconcolor %}{{ item.icon_color }}{% else %}{{ b_i.icon_banners_3_icon_color }}{% endif %}"></i>
-            {%- endif -%}
-          </div>
-          {%- endif -%}
-          <div class="smk-col-description">
-            <h4 class="smk-title" style="color:{{ item.title_color }};" data-c="{{ item.title_color }}" data-ac="{{ item.title_hover_color }}">{{ b_i.icon_banners_3_text1 }}</h4>
-            {% unless b_i.icon_banners_3_text2 == '' %}<p style="color: {{ item.desc_color }}">{{ b_i.icon_banners_3_text2 }}</p>{% endunless %}
-          </div>
-        </a>
-      </div>
-      {%- endif -%}
-            {%- if b_i.icon_banners_4_show_banner -%}
-      <div class="col-xs-12 col-md-6 col-lg-{{ item.items }}" {{ block.shopify_attributes }}>
-        <a href="{{ b_i.icon_banners_4_link }}" class="smk-services-block{% if item.vertical %} smk-services-block-vertical{% endif %}" data-hovercolors>
-          {%- if b_i.icon_banners_4_show_icon != 'none' -%}
-          <div class="smk-col-icon{% if b_i.icon_banners_4_show_icon == 'image' %} smk-col-icon-image{% endif %}">
-            {%- if b_i.icon_banners_4_show_icon == 'image' -%}
-            <img src="{{ b_i.icon_banners_4_image | img_url: image_size }}" alt="{{ b_i.icon_banners_4_image.alt }}">
-            {%- else -%}
-            <i class="fas fa-{{ b_i.icon_banners_4_icon }}" style="color: {% if item.same_iconcolor %}{{ item.icon_color }}{% else %}{{ b_i.icon_banners_4_icon_color }}{% endif %}"></i>
-            {%- endif -%}
-          </div>
-          {%- endif -%}
-          <div class="smk-col-description">
-            <h4 class="smk-title" style="color:{{ item.title_color }};" data-c="{{ item.title_color }}" data-ac="{{ item.title_hover_color }}">{{ b_i.icon_banners_4_text1 }}</h4>
-            {% unless b_i.icon_banners_4_text2 == '' %}<p style="color: {{ item.desc_color }}">{{ b_i.icon_banners_4_text2 }}</p>{% endunless %}
-          </div>
-        </a>
-      </div>
-      {%- endif -%}
+      {%- endfor -%}
+
+
     </div>
   </div>
 </div>
@@ -481,6 +488,7 @@
     {%- if item.use_fixed_image_height and item.fit_fixed_image -%}
     .smk-content .smk-icon-banners-{{ block.id }} .smk-services-listing .smk-services-block .smk-col-icon-image img {
         height: 100%;
+        width: auto;
     }
     {%- endif -%}
     .smk-content .smk-icon-banners-{{ block.id }} .smk-services-listing .smk-services-block .smk-col-description .smk-title {
@@ -535,18 +543,20 @@
 
 {%- if block.type == "smk_instagram" -%}{%- assign item = block.settings -%}
 {%- if item.show_section -%}
-<div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent">
-  <div class="container{% if item.fullwidth %}-fluid{% endif %}" data-smk-section-type="smk_instagram">
-    {%- if item.show_titles -%}
-    <div class="smk-block-title{% if item.title_to_left %} text-left{% endif %}{% if item.boxed_title and item.fullwidth %} container{% endif %}">
-      <h2 class="smk-title">{{ item.text1 }}</h2>
-      {%- unless item.text2 == '' -%}<div class="smk-description">{{ item.text2 }}</div>{%- endunless -%}
+<div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
+    <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent">
+      <div class="container{% if item.fullwidth %}-fluid{% endif %}" data-smk-section-type="smk_instagram">
+        {%- if item.show_titles -%}
+        <div class="smk-block-title{% if item.title_to_left %} text-left{% endif %}{% if item.boxed_title and item.fullwidth %} container{% endif %}">
+          <h2 class="smk-title">{{ item.text1 }}</h2>
+          {%- unless item.text2 == '' -%}<div class="smk-description">{{ item.text2 }}</div>{%- endunless -%}
+        </div>
+        {%- endif -%}
+        <div class="row">
+          <div id="instafeed-{{ block.id }}" class="{% if item.containerpadding %}inscontainerpadding {% endif %}{% if item.gridnopadding %}gridnopadding {% endif %}{% if item.in_line %}instafeed-fluid{% else %}instafeed-col{% if item.grid_5 == "small" %} instafeed-col-item-06{% elsif item.grid_5 == "normal5" %} instafeed-col-item-05{% elsif item.grid_5 == "normal" %} instafeed-col-item-08{% endif %}{% endif %}" data-username="{{ block.settings.username }}" data-hashtag="{{ item.hashtag }}" data-count="{{ block.settings.count }}"></div>
+        </div>
+      </div>
     </div>
-    {%- endif -%}
-    <div class="row">
-      <div id="instafeed-{{ block.id }}" class="{% if item.containerpadding %}inscontainerpadding {% endif %}{% if item.gridnopadding %}gridnopadding {% endif %}{% if item.in_line %}instafeed-fluid{% else %}instafeed-col{% if item.grid_5 == "small" %} instafeed-col-item-06{% elsif item.grid_5 == "normal5" %} instafeed-col-item-05{% elsif item.grid_5 == "normal" %} instafeed-col-item-08{% endif %}{% endif %}" data-username="{{ block.settings.username }}" data-hashtag="{{ item.hashtag }}" data-count="{{ block.settings.count }}"></div>
-    </div>
-  </div>
 </div>
 {%- endif -%}{%- endif -%}
 
@@ -563,7 +573,7 @@
 {%- assign img_size = info_image_size | split: 'x' | first | append: 'x' -%}
 
 {%- if item.show_section -%}
-<div class="shopify-section smk-content">
+<div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
     <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent">
       <div class="container container{% if item.fullwidth %}-fluid{% endif %} container-fluid-custom-mobile-padding">
         <div class="smk-categories-listing">
@@ -734,32 +744,76 @@
 
 {%- if block.type == "smk_text_block" -%}{%- assign item = block.settings -%}
 
-{%- if item.show_section -%}
-<div class="shopify-section smk-content">
-  <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent"  style="background-color: {{item.bg_color}};">
+{% if item.show_section %}
+<div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
+  <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent smk-text-block-{{ block.id }}"  style="background-color: {{item.bg_color}};">
     <div class="container{% if item.fullwidth %}-fluid{% endif %}">
       <div class="smk-block-title">
         <h1 class="smk-title" style="text-align: {{item.text1_align}}; color: {{item.text1_color}};">{{ item.text1 }}</h1>
         {% unless item.text2 == '' %}<div class="smk-description" style="text-align: {{item.text2_align}}; color: {{item.text2_color}};">{{ item.text2 }}</div>{% endunless %}
       </div>
-      {% unless item.text3 == '' %}<div style="text-align: {{item.text3_align}}; color: {{item.text3_color}};">
+      {% unless item.text3 == '' %}<div class="smk-description-small" style="text-align: {{item.text3_align}}; color: {{item.text3_color}};">
         {{ item.text3 }}
       </div>{% endunless %}
     </div>
   </div>
 </div>
-{%- endif -%}{%- endif -%}
+
+<style>
+     .smk-content .smk-text-block-{{ block.id }} .smk-title,
+     .smk-content .smk-text-block-{{ block.id }} h1.smk-title:not(.tt-title-subpages):not([class^="tt-title"]):not([class^="tt-collapse"]):not([class^="tt-aside"]) {
+         font-size: {{ item.title_font_size }}px;
+         line-height: {{ item.title_line_height }}px;
+         font-weight: {{ item.title_font_weight }};
+     }
+     .smk-content .smk-text-block-{{ block.id }} .smk-description {
+         font-size: {{ item.subtitle_font_size }}px;
+         line-height: {{ item.subtitle_line_height }}px;
+         font-weight: {{ item.subtitle_font_weight }};
+     }
+     .smk-content .smk-text-block-{{ block.id }} .smk-description-small {
+         font-size: {{ item.description_font_size }}px;
+         line-height: {{ item.description_line_height }}px;
+         font-weight: {{ item.description_font_weight }};
+     }
+     .smk-content .smk-text-block-{{ block.id }} .smk-block-title {
+        padding-bottom: {{ item.description_offset }}px;
+     }
+
+     @media (max-width: 790px){
+         .smk-content .smk-text-block-{{ block.id }} .smk-title,
+         .smk-content .smk-text-block-{{ block.id }} h1.smk-title:not(.tt-title-subpages):not([class^="tt-title"]):not([class^="tt-collapse"]):not([class^="tt-aside"]) {
+             font-size: {{ item.title_font_size_mobile }}px;
+             line-height: {{ item.title_line_height_mobile }}px;
+             font-weight: {{ item.title_font_weight_mobile }};
+         }
+         .smk-content .smk-text-block-{{ block.id }} .smk-description {
+             font-size: {{ item.subtitle_font_size_mobile }}px;
+             line-height: {{ item.subtitle_line_height_mobile }}px;
+             font-weight: {{ item.subtitle_font_weight_mobile }};
+         }
+         .smk-content .smk-text-block-{{ block.id }} .smk-description-small {
+             font-size: {{ item.description_font_size_mobile }}px;
+             line-height: {{ item.description_line_height_mobile }}px;
+             font-weight: {{ item.description_font_weight_mobile }};
+         }
+         .smk-content .smk-text-block-{{ block.id }} .smk-block-title {
+             padding-bottom: {{ item.description_offset_mobile }}px;
+          }
+     }
+</style>
+{% endif %}{%- endif -%}
 
 
 {%- if block.type == "smk_text_plus_image" -%}{%- assign item = block.settings -%}
 
 {%- if item.show_section -%}
-<div class="shopify-section smk-content">
+<div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
   <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent tpisection{{ block.id }}">
     <div {% if item.usebgcolor or item.showbgimage_bg %}class="layout-box01-wrapper"{% endif %}{% if item.showbgimage_bg %} style="background-image: url({{ item.image_bg | img_url: '2048x' }});"{% endif %}>
       <div class="container{% if item.fullwidth %}-fluid{% endif %}">
         <!-- obj -->
-        <div class="row smk-layout-box01{% if item.reverse %} flex-row-reverse{% endif %} {{ item.contentalign }}">
+        <div class="row smk-layout-box01{% if item.reverse %} flex-row-reverse{% endif %}{% if item.reverse_mobile %} row-reverse-mobile{% endif %} {{ item.contentalign }}">
           <div class="col-img col-md-{{ item.grid | split: '.' | first }}{% unless item.showimage %} d-sm-none-custom{% endunless %} respimgsize">
             {% if item.showimage %}
             {%- if item.image == blank -%}{%- include "smk_get_svg" type:'image' size:'580x400' -%}
@@ -833,6 +887,7 @@
     background-size: {{ item.imagesize_bg }};
     background-position: {{ item.imagealign_bg }};
   }
+
   .tpisection{{ block.id }} .smk-layout-box01:not(.flex-row-reverse) .col-description{
     padding-left: {{ item.textoffset }}px;
   }
@@ -868,6 +923,9 @@
     }
   }
   @media (max-width: 1024px){
+    .tpisection{{ block.id }} .smk-layout-box01.row-reverse-mobile {
+        flex-direction: column-reverse !important;
+    }
     .tpisection{{ block.id }} .smk-layout-box01 .col-description .btn-section-css{
       margin-top: {{ item.buttonpadding_mobile }}px;
     }
@@ -927,7 +985,7 @@
 {%- assign b_i = block.settings -%}
 
 {%- if item.show_section -%}
-<div class="shopify-section smk-content">
+<div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
   <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent smk-faq-section-{{ block.id }}">
     <div class="container{% if item.fullwidth %}-fluid{% endif %} cd-faq js-cd-faq"  data-smk-section-type="smk_faq">
 
@@ -1152,7 +1210,7 @@
 {%- if block.type == "smk_testimonials" -%}{% assign item = block.settings %}
 {% assign b_i = block.settings %}
 {%- if item.show_section -%}
-<div class="shopify-section smk-content">
+<div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
 
 {%- capture bgco =  -%}
 {% if item.usebgcolor %}
@@ -1259,7 +1317,7 @@ background-repeat: no-repeat;
 {%- if block.type == "smk_video_banner" -%}{%- assign item = block.settings -%}
 
 {%- if item.show_section -%}
-<div class="shopify-section smk-content{% if item.no_borders %} no-borders{% endif %}">
+<div class="shopify-section smk-content{% if item.no_borders %} no-borders{% endif %}" data-smk-section-location="{{ item.section_location }}">
   <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent smk-video-banner-section-{{ block.id }}">
     <div class="container{% if item.fullwidth %}-fluid{% endif %}">
         <div class="row">
@@ -1400,7 +1458,7 @@ background-repeat: no-repeat;
 {%- assign b_i = block.settings -%}
 
 {%- if item.show_section -%}
-<div class="shopify-section smk-content{% if item.no_borders %} no-borders{% endif %}">
+<div class="shopify-section smk-content{% if item.no_borders %} no-borders{% endif %}" data-smk-section-location="{{ item.section_location }}">
 
 <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent smk-columns-products-{{ block.id }}">
     <div class="container{% if item.fullwidth %}-fluid{% endif %}">
@@ -1488,7 +1546,7 @@ background-repeat: no-repeat;
 {%- if block.type == "smk_revolution_slider" -%}{%- assign item = block.settings -%}
 {%- assign b_i = block.settings -%}
 {%- if item.show_section -%}
-<div class="shopify-section smk-content no-borders">
+<div class="shopify-section smk-content no-borders" data-smk-section-location="{{ item.section_location }}">
 
     <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent" data-smk-section-type="smk_revolution_slider">
       <div class="container{% if item.fullwidth %}-fluid{% endif %}">
@@ -2021,7 +2079,7 @@ background-repeat: no-repeat;
 {%- assign b_i = block.settings -%}
 
 {%- if item.show_section -%}
-    <div class="shopify-section smk-content">
+    <div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
 
     {%- assign grid = section.settings.items -%}
     {%- capture info_image_size -%}
@@ -2213,7 +2271,7 @@ background-repeat: no-repeat;
 {%- assign b_i = block.settings -%}
 
 {%- if item.show_section -%}
-    <div class="shopify-section smk-content">
+    <div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
         <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent tpivsection{{ block.id }}">
           {% if item.usebgcolor %}<div{% if item.showbgimage %} style="background-image: url({{ item.bgimage | img_url: '2048x' }});"{% endif %}>{% endif %}
           <div class="container{% if item.fullwidth %}-fluid{% endif %}">
@@ -2682,7 +2740,7 @@ background-repeat: no-repeat;
 {%- assign b_i = block.settings -%}
 
 {%- if item.show_section -%}
-    <div class="shopify-section smk-content">
+    <div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
         <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent {{ item.custom_classes }}"{% if item.use_background and item.background_boxed == false %} style="background:{{ item.background_color }}"{% endif %} data-smk-section-type="smk_icon_features_bar">
           <div class="container{% if item.fullwidth %}-fluid{% endif %}{% if item.items_always_in_center %} text-center{% endif %}"{% if item.use_background and item.background_boxed %} style="background:{{ item.background_color }}"{% endif %}>
 
@@ -2746,7 +2804,7 @@ background-repeat: no-repeat;
 
 
 {%- if item.show_section -%}
-    <div class="shopify-section smk-content">
+    <div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
 
 
 {%- assign grid = block.settings.items -%}
@@ -2938,7 +2996,7 @@ background-repeat: no-repeat;
 {%- assign b_i = block.settings -%}
 
 {%- if item.show_section -%}
-<div class="shopify-section smk-content{% if item.no_borders %} no-borders{% endif %}">
+<div class="shopify-section smk-content{% if item.no_borders %} no-borders{% endif %}" data-smk-section-location="{{ item.section_location }}">
 
     <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent smk-product-offers-{{ block.id }}" data-smk-section-type="smk_product_offers">
         <div class="container{% if item.fullwidth %}-fluid{% endif %}">
@@ -3542,5 +3600,88 @@ background-repeat: no-repeat;
           {%- endif -%}
           {%- endfor -%}
 </style>{%- endif -%}
+
+
+{%- if block.type == "smk_cta_button" -%}{%- assign item = block.settings -%}
+
+{% if item.show_section %}
+<div class="shopify-section smk-content" data-smk-section-location="{{ item.section_location }}">
+  <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}smk-offset-small {% endif %}container-indent smk-cta-button-{{ block.id }}">
+    <div class="container{% if item.fullwidth %}-fluid{% endif %}" style="display: flex; justify-content: {{ item.pos }}">
+        {%- assign product_handle = item.product -%}
+        {%- assign product = all_products[product_handle] -%}
+      <div class="btn btn-xl smk-cta-btn"
+                data-behaviour="{{ item.bb }}"
+                data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                data-url="{{ item.link }}"
+                data-shopify-url="{{ item.s_link }}"
+                data-product-url="{{ product.url }}"
+              >
+      {{ item.text }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+     .smk-content .smk-cta-button-{{ block.id }} .btn.smk-cta-btn {
+         border-radius: {{ item.rc }}px;
+         font-size: {{ item.fs }}px;
+         line-height: {{ item.lh }}px;
+         font-weight: {{ item.fw }};
+         padding: {{ item.bpv }}px {{ item.bph }}px;
+         border: {{ item.bs }}px {{ item.b_s }} {{ item.bc }};
+         color: {{ item.tc }};
+         {% if item.bgct == 'fill' %}
+             background: {{ item.bgc }};
+         {% elsif item.bgct == 'lgh' %}
+             background: linear-gradient(90deg, {{ item.bggs }}, {{ item.bgge }});
+         {% elsif item.bgct == 'lgv' %}
+              background: linear-gradient(180deg, {{ item.bggs }}, {{ item.bgge }});
+          {% elsif item.bgct == 'rg' %}
+              background: radial-gradient({{ item.bggs }}, {{ item.bgge }});
+         {% endif %}
+         cursor: pointer;
+         {% if item.u %}
+            text-decoration: underline;
+         {% else %}
+            text-decoration: none;
+         {% endif %}
+     }
+
+     .smk-content .smk-cta-button-{{ block.id }} .btn.smk-cta-btn:hover {
+        border: {{ item.bs }}px {{ item.b_s }} {{ item.bc_h }};
+        color: {{ item.tc_h }};
+        {% if item.bgct == 'fill' %}
+                     background: {{ item.bgc_h }};
+                 {% elsif item.bgct == 'lgh' %}
+                     background: linear-gradient(90deg, {{ item.bggs_h }}, {{ item.bgge_h }});
+                 {% elsif item.bgct == 'lgv' %}
+                      background: linear-gradient(180deg, {{ item.bggs_h }}, {{ item.bgge_h }});
+                  {% elsif item.bgct == 'rg' %}
+                      background: radial-gradient({{ item.bggs_h }}, {{ item.bgge_h }});
+                 {% endif %}
+        {% if item.u_m %}
+            text-decoration: underline;
+         {% else %}
+            text-decoration: none;
+         {% endif %}
+     }
+
+     @media (max-width: 790px){
+         .smk-content .smk-cta-button-{{ block.id }} .btn.smk-cta-btn {
+             font-size: {{ item.fs_m }}px;
+             line-height: {{ item.lh_m }}px;
+             font-weight: {{ item.fw_m }};
+             padding: {{ item.bpv_m }}px {{ item.bph_m }}px;
+             border: {{ item.bs_m }}px {{ item.b_s }} {{ item.bc }};
+         }
+
+         .smk-content .smk-cta-button-{{ block.id }} .btn.smk-cta-btn:hover {
+             border: {{ item.bs_m }}px {{ item.b_s }} {{ item.bc_h }};
+          }
+     }
+</style>
+{% endif %}{%- endif -%}
 
 

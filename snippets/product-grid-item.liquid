@@ -67,6 +67,10 @@
       </span>
     </span>
     <p class="grid-link__title">{{ product_title }}</p>
+{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: true, product: product %}
+{% comment %}End automatically added Judge.me widget{% endcomment %}
+
     {% if section.settings.vendor_enable %}
       <p class="grid-link__title grid-link__vendor">{{ featured.vendor }}</p>
     {% endif %}

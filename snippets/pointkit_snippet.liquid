@@ -1,0 +1,19 @@
+<script>
+    {% if customer != nil and customer.has_account %}
+      {% assign hash = customer.email | hmac_sha256: "0cce4a24834bbf3eaa8ed507" %}
+      window.PointsKit = {
+        customer: {
+          id: "{{ customer.id }}",
+          email: "{{ customer.email }}",
+          first_name: "{{ customer.first_name }}",
+          last_name:"{{ customer.last_name}}",
+          hash: "{{ hash }}",
+        },
+        shop: "sustainabilitylab.myshopify.com"
+      };
+    {% else %}
+      window.PointsKit = {
+        shop: "sustainabilitylab.myshopify.com"
+      };
+    {% endif %}
+    </script>

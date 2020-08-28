@@ -1,23 +1,23 @@
 {
   "current": {
-    "grid_link_title": "#000000",
-    "add_to_cart_button": "#06356a",
-    "buy_it_now_button": "#06356a",
-    "continue_shopping_button": "#06356a",
-    "update_cart_button": "#06356a",
-    "check_out_button": "#06356a",
     "enable_wide_layout": true,
-    "color_topbar_bg": "#ffffff",
+    "color_topbar_bg": "#e8ebeb",
     "color_body_bg": "#ffffff",
     "color_footer_bg": "rgba(0,0,0,0)",
+    "grid_link_title": "#000000",
     "color_borders": "#ebebeb",
     "color_primary": "#06356a",
     "color_button_primary_text": "#ffffff",
+    "add_to_cart_button": "#06356a",
+    "buy_it_now_button": "#b4bbbb",
+    "continue_shopping_button": "#767676",
+    "update_cart_button": "#06356a",
+    "check_out_button": "#06356a",
     "color_topbar_text": "#000000",
     "color_header_text": "#000000",
     "color_body_text": "#000000",
     "color_footer_text": "#000000",
-    "color_footer_social_link": "#f7a1c9",
+    "color_footer_social_link": "#06356a",
     "type_base_family": "avenir_next_n4",
     "type_base_size": "17px",
     "type_header_family": "avenir_next_n6",
@@ -26,13 +26,13 @@
     "type_accent_size": "18px",
     "type_accent_transform": false,
     "type_accent_spacing": true,
-    "favicon": "",
+    "favicon": "shopify:\/\/shop_images\/Final_LOGO_2.png",
     "share_image": "",
     "social_twitter_link": "",
-    "social_facebook_link": "https:\/\/www.facebook.com\/sustainabilitylabco",
+    "social_facebook_link": "https:\/\/www.facebook.com\/sustainabilitylab.co",
     "social_pinterest_link": "",
     "social_google_plus_link": "",
-    "social_instagram_link": "https:\/\/instagram.com\/the_sustainability_lab",
+    "social_instagram_link": "https:\/\/instagram.com\/sustainabilitylab.co",
     "social_snapchat_link": "",
     "social_tumblr_link": "",
     "social_youtube_link": "",
@@ -55,7 +55,7 @@
     "checkout_heading_font": "Roboto",
     "checkout_body_font": "Roboto",
     "checkout_accent_color": "#767676",
-    "checkout_button_color": "#f7a1c9",
+    "checkout_button_color": "#06356a",
     "checkout_error_color": "#e42c00",
     "collections_center_grid_link": false,
     "sections": {
@@ -64,13 +64,13 @@
         "settings": {
           "header_search_enable": true,
           "logo": "shopify:\/\/shop_images\/Screen_Shot_2020-05-25_at_2.56.44_PM.png",
-          "logo_max_width": "300",
+          "logo_max_width": "225",
           "nav_menu": "main-menu",
-          "nav_below_logo": true,
-          "left_aligned_logo": false,
+          "nav_below_logo": false,
+          "left_aligned_logo": true,
           "show_header_lines": false,
-          "show_announcement": true,
-          "header_text": "",
+          "show_announcement": false,
+          "header_text": "we've soft launched - orders shipping out after aug 15!",
           "announcement_link": ""
         }
       },
@@ -80,7 +80,7 @@
           "footer-1": {
             "type": "menu",
             "settings": {
-              "menu_title": "contact us",
+              "menu_title": "Links",
               "menu": "footer"
             }
           },
@@ -88,25 +88,25 @@
             "type": "social",
             "settings": {}
           },
-          "1591815709204": {
-            "type": "menu",
-            "settings": {
-              "menu_title": "Links",
-              "menu": "footer"
-            }
-          },
           "footer-3": {
             "type": "newsletter",
             "settings": {
-              "subtext": "<p>sign up for the latest news, offers, and products<\/p>"
+              "subtext": "<p>Sign up for the latest news, offers, and products<\/p>"
+            }
+          },
+          "1595704025326": {
+            "type": "menu",
+            "settings": {
+              "menu_title": "Policies",
+              "menu": "policies"
             }
           }
         },
         "block_order": [
           "footer-1",
           "footer-2",
-          "1591815709204",
-          "footer-3"
+          "footer-3",
+          "1595704025326"
         ],
         "settings": {
           "show_methods_of_payment": true
@@ -116,12 +116,12 @@
         "type": "product-template",
         "settings": {
           "product_vendor_enable": true,
-          "product_quantity_enable": false,
+          "product_quantity_enable": true,
           "product_image_zoom_type": "lightbox",
           "product_thumbnails_position": "below",
           "show_extra_tab": false,
           "extra_tab_content": "",
-          "social_sharing": false,
+          "social_sharing": true,
           "enable_payment_button": true,
           "add_to_cart_width": "small"
         }
@@ -130,7 +130,7 @@
         "type": "article-template",
         "settings": {
           "article_author_enable": false,
-          "social_sharing": false
+          "social_sharing": true
         }
       },
       "collection-template": {
@@ -140,17 +140,17 @@
           "show_sale_circle": true,
           "show_sold_out_circle": true,
           "sort_enable": true,
-          "tags_enable": true,
+          "tags_enable": false,
           "center_grid_link": true
         }
       },
       "collection-list": {
         "type": "collection-list",
         "blocks": {
-          "collection-list-3": {
+          "collection-list-0": {
             "type": "collection",
             "settings": {
-              "collection": "safe-toys-your-baby-will-love"
+              "collection": "home-and-kitchen"
             }
           },
           "collection-list-1": {
@@ -159,10 +159,10 @@
               "collection": "personal-body-care"
             }
           },
-          "collection-list-0": {
+          "collection-list-3": {
             "type": "collection",
             "settings": {
-              "collection": "clean-your-home-with-the-good-stuff"
+              "collection": "garden"
             }
           },
           "collection-list-2": {
@@ -170,33 +170,40 @@
             "settings": {
               "collection": "give-the-perfect-gift"
             }
+          },
+          "1595684883293": {
+            "type": "collection",
+            "settings": {
+              "collection": "on-the-go"
+            }
           }
         },
         "block_order": [
-          "collection-list-3",
-          "collection-list-1",
           "collection-list-0",
-          "collection-list-2"
+          "collection-list-1",
+          "collection-list-3",
+          "collection-list-2",
+          "1595684883293"
         ],
         "settings": {
-          "title": "shop by category"
+          "title": "shop by collection"
         }
       },
       "newsletter": {
         "type": "newsletter",
         "settings": {
           "heading": "subscribe to TSL's newsletter",
-          "subtext": "<p>check out what we're growing in the lab: promotions, new products and sales<\/p>",
+          "subtext": "<p>see&nbsp;what's growing in the lab &mdash; plus promotions, new arrivals, and sales<\/p>",
           "color_bg": "#d4d8d8"
         }
       },
       "1590445414200": {
         "type": "featured-collection",
         "settings": {
-          "title": "newest brands and products",
+          "title": "new arrivals",
           "featured_collection": "frontpage",
           "num_per_row": 5,
-          "num_rows": 1,
+          "num_rows": 2,
           "vendor_enable": true,
           "show_sale_circle": true,
           "show_sold_out_circle": false,
@@ -205,10 +212,11 @@
       },
       "1590456006120": {
         "type": "Instagram",
+        "disabled": true,
         "settings": {
           "access_token": "14468761239.5af1058.9b9109237f06493988a15c1842edc27f",
           "section_title": "follow us @sustainabilitylab.co",
-          "number_of_images": 11,
+          "number_of_images": 50,
           "number_of_slides": 7,
           "rotation_speed": 10
         }
@@ -216,12 +224,12 @@
       "1590525272796": {
         "type": "featured-blog",
         "settings": {
-          "title": "the TSL blog",
-          "blog": "the-tsl-blog",
-          "post_limit": 3,
-          "blog_show_date": true,
+          "title": "perspectives from the lab",
+          "blog": "lab-perspectives",
+          "post_limit": 4,
+          "blog_show_date": false,
           "blog_show_author": false,
-          "blog_show_image": false,
+          "blog_show_image": true,
           "blog_show_excerpt": true,
           "show_view_all": true
         }
@@ -242,7 +250,8 @@
       "cart-template": {
         "type": "cart-template",
         "settings": {
-          "cart_notes_enable": false
+          "cart_notes_enable": true,
+          "cart_notes_text": "<p>Please note we use reuse existing shipping boxes and mailers (where possible) as a core sustainable business practice. If for any reason you prefer to receive a new shipping box\/mailer, please let us know in the notes section below.&nbsp;<\/p>"
         }
       },
       "1590844865672": {
@@ -317,12 +326,12 @@
           "1591911633487-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/full-frame-photography-of-leaves-1534925.jpg",
+              "image": "shopify:\/\/shop_images\/vickholius-nugroho-jt6QxZwSOCQ-unsplash.jpg",
               "alignment": "left center",
               "overlay_opacity": 22,
               "color_text": "#ffffff",
               "text_alignment": "center",
-              "slide_heading": "Our mission is to help everyday individuals live in alignment with their values to secure the future of our planet—without sacrificing quality, price, or aesthetics. We believe in the power of consumers to vote with our dollars, and not only imagine the future we want, but to create it. We make this process simple and clear for our customers.",
+              "slide_heading": "Our mission is to democratize sustainable living by curating sustainable products and ideas so you can vote with your dollars to secure the future of our shared planet.",
               "button_label": "",
               "button_link": ""
             }
@@ -332,26 +341,39 @@
           "1591911633487-0"
         ],
         "settings": {
-          "slider_height": "adapt",
+          "slider_height": "small",
           "slider_autorotate": false,
           "slider_autorotate_rate": 5,
           "slider_home_transition": "slide",
-          "text_size": "small"
+          "text_size": "large"
         }
       },
       "slider": {
         "type": "slider",
         "blocks": {
+          "1591913977230": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/woman-in-black-pants-3738035.jpg",
+              "alignment": "center center",
+              "overlay_opacity": 12,
+              "color_text": "#ffffff",
+              "text_alignment": "center",
+              "slide_heading": "sustainable living for everyone, not just the sustainability people",
+              "button_label": "shop now",
+              "button_link": "shopify:\/\/collections\/all"
+            }
+          },
           "1591493499319": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/hand_in_trees.jpeg",
+              "image": "shopify:\/\/shop_images\/Not_sure_where_to_start_your_sustainable_living_journey__6.png",
               "alignment": "center center",
-              "overlay_opacity": 10,
-              "color_text": "#ffffff",
-              "text_alignment": "right",
-              "slide_heading": "sustainability made easy for everyone with high-quality products designed for a better future",
-              "button_label": "shop now",
+              "overlay_opacity": 7,
+              "color_text": "#000000",
+              "text_alignment": "left",
+              "slide_heading": "shop sustainably, vote sustainably, live sustainably",
+              "button_label": "explore now",
               "button_link": "shopify:\/\/collections\/all"
             }
           },
@@ -359,39 +381,13 @@
             "type": "image",
             "settings": {
               "image": "shopify:\/\/shop_images\/person-holding-pink-plastic-cup-3738032.jpg",
-              "alignment": "center center",
+              "alignment": "right top",
               "overlay_opacity": 0,
               "color_text": "#0f0e0e",
               "text_alignment": "right",
-              "slide_heading": "Your one-stop, curated shop for first-mover products with sustainable DNA",
-              "button_label": "",
-              "button_link": ""
-            }
-          },
-          "slider-2": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/photo-of-leaves-1382393.jpg",
-              "alignment": "center center",
-              "overlay_opacity": 27,
-              "color_text": "#ffffff",
-              "text_alignment": "center",
-              "slide_heading": "we've got you covered—never sacrifice on quality, price, or aesthetics",
-              "button_label": "",
-              "button_link": ""
-            }
-          },
-          "1591913977230": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/woman-in-black-pants-3738035.jpg",
-              "alignment": "center center",
-              "overlay_opacity": 16,
-              "color_text": "#ebebeb",
-              "text_alignment": "right",
-              "slide_heading": "sustainability for everyone, not just the sustainability people",
-              "button_label": "",
-              "button_link": ""
+              "slide_heading": "vote with your dollars for the future you imagine",
+              "button_label": "explore now",
+              "button_link": "shopify:\/\/collections\/all"
             }
           },
           "1595180886402": {
@@ -404,37 +400,36 @@
               "text_alignment": "left",
               "slide_heading": "Personal care essentials",
               "button_label": "shop now",
-              "button_link": ""
+              "button_link": "shopify:\/\/collections\/personal-body-care"
             }
           },
           "1595180942214": {
             "type": "image",
             "settings": {
               "image": "shopify:\/\/shop_images\/gaelle-marcel-g917EoHF-Ls-unsplash.jpg",
-              "alignment": "center center",
+              "alignment": "right center",
               "overlay_opacity": 0,
-              "color_text": "#ffffff",
-              "text_alignment": "center",
-              "slide_heading": "Image slide",
-              "button_label": "",
-              "button_link": ""
+              "color_text": "#000000",
+              "text_alignment": "left",
+              "slide_heading": "on-the-go essentials for everyday life",
+              "button_label": "see collection",
+              "button_link": "shopify:\/\/collections\/on-the-go"
             }
           }
         },
         "block_order": [
+          "1591913977230",
           "1591493499319",
           "slider-1",
-          "slider-2",
-          "1591913977230",
           "1595180886402",
           "1595180942214"
         ],
         "settings": {
-          "slider_height": "large",
+          "slider_height": "adapt",
           "slider_autorotate": false,
           "slider_autorotate_rate": 9,
           "slider_home_transition": "slide",
-          "text_size": "small"
+          "text_size": "large"
         }
       },
       "password-header": {
@@ -608,22 +603,11 @@
       },
       "1593388472180": {
         "type": "rich-text",
+        "disabled": true,
         "settings": {
           "section_title": "our brands share our vision for the future",
           "text": "",
           "text_size": "medium"
-        }
-      },
-      "smk_collection_blocks_top": {
-        "type": "smk_collection_blocks_top",
-        "settings": {
-          "show_collection_blocks_above_collection": false
-        }
-      },
-      "smk_collection_blocks_bottom": {
-        "type": "smk_collection_blocks_bottom",
-        "settings": {
-          "show_collection_blocks_below_collection": false
         }
       },
       "1594585435407": {
@@ -632,7 +616,7 @@
           "1594585435407-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/our_vision_1.png",
+              "image": "shopify:\/\/shop_images\/Not_sure_where_to_start_your_sustainable_living_journey__9.png",
               "alignment": "center center",
               "overlay_opacity": 0,
               "color_text": "#080000",
@@ -645,7 +629,7 @@
           "1594585435407-1": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/our_vision_5.png",
+              "image": "shopify:\/\/shop_images\/Not_sure_where_to_start_your_sustainable_living_journey__9.png",
               "alignment": "center center",
               "overlay_opacity": 0,
               "color_text": "#000000",
@@ -658,7 +642,7 @@
           "1594588130260": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/our_vision_5.png",
+              "image": "shopify:\/\/shop_images\/Not_sure_where_to_start_your_sustainable_living_journey__9.png",
               "alignment": "center center",
               "overlay_opacity": 0,
               "color_text": "#000000",
@@ -671,7 +655,7 @@
           "1594588430923": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/our_vision_5.png",
+              "image": "shopify:\/\/shop_images\/Not_sure_where_to_start_your_sustainable_living_journey__9.png",
               "alignment": "center center",
               "overlay_opacity": 0,
               "color_text": "#000000",
@@ -684,7 +668,7 @@
           "1594588512723": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/our_vision_5.png",
+              "image": "shopify:\/\/shop_images\/Not_sure_where_to_start_your_sustainable_living_journey__9.png",
               "alignment": "center center",
               "overlay_opacity": 0,
               "color_text": "#000000",
@@ -697,7 +681,7 @@
           "1594589449592": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/our_vision_6.png",
+              "image": "shopify:\/\/shop_images\/Not_sure_where_to_start_your_sustainable_living_journey__9.png",
               "alignment": "center center",
               "overlay_opacity": 0,
               "color_text": "#000000",
@@ -717,23 +701,11 @@
           "1594589449592"
         ],
         "settings": {
-          "slider_height": "adapt",
+          "slider_height": "large",
           "slider_autorotate": false,
           "slider_autorotate_rate": 9,
           "slider_home_transition": "slide",
-          "text_size": "small"
-        }
-      },
-      "smk_product_blocks_top": {
-        "type": "smk_product_blocks_top",
-        "settings": {
-          "show_product_blocks_above_buybox": false
-        }
-      },
-      "smk_product_blocks_bottom": {
-        "type": "smk_product_blocks_bottom",
-        "settings": {
-          "show_product_blocks_below_buybox": false
+          "text_size": "large"
         }
       },
       "smk_product_blocks_footer": {
@@ -741,15 +713,96 @@
         "settings": {
           "show_product_blocks_footer": false
         }
+      },
+      "custom-blocks-above-cart": {
+        "type": "custom-blocks-above-cart",
+        "settings": {}
+      },
+      "custom-blocks-below-cart": {
+        "type": "custom-blocks-below-cart",
+        "settings": {}
+      },
+      "custom-blocks-above": {
+        "type": "custom-blocks-above",
+        "settings": {}
+      },
+      "custom-blocks-below": {
+        "type": "custom-blocks-below",
+        "blocks": {
+          "1595651527962": {
+            "type": "custom-html",
+            "settings": {
+              "page_handle": "vote-climate",
+              "custom-html": "<p>\n<script type=\"text\/javascript\" src=\"https:\/\/d3rse9xjbp8270.cloudfront.net\/at.js\" crossorigin=\"anonymous\"><\/script>\n<\/p>\n<div class=\"ngp-form\" data-form-url=\"https:\/\/secure.everyaction.com\/v1\/Forms\/7zO_Y2zQKUuFQJDlc6phig2\" data-fastaction-endpoint=\"https:\/\/fastaction.ngpvan.com\" data-inline-errors=\"true\" data-fastaction-nologin=\"true\" data-databag-endpoint=\"https:\/\/profile.ngpvan.com\" data-databag=\"everybody\" data-mobile-autofocus=\"false\"><\/div>"
+            }
+          },
+          "1595651550518": {
+            "type": "richtext",
+            "settings": {
+              "page_handle": "vote-climate",
+              "richtext": "<p>p.s. remember to register to vote at <a href=\"http:\/\/vote.org\/\" title=\"http:\/\/vote.org\/\">vote.org<\/a> or the <a href=\"https:\/\/environmentalvoter.turbovote.org\/\" title=\"https:\/\/environmentalvoter.turbovote.org\/\">Environmental Voter Project<\/a>.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1595651527962",
+          "1595651550518"
+        ],
+        "settings": {}
+      },
+      "1595694968834": {
+        "type": "instafeed",
+        "settings": {
+          "heading_font": "avenir_next_n4",
+          "heading_size": 23,
+          "feed_width": 100,
+          "html_area": "<!-- -->"
+        }
+      },
+      "smk_blocks": {
+        "type": "smk_blocks",
+        "settings": {}
+      },
+      "smk_product_blocks": {
+        "type": "smk_product_blocks",
+        "settings": {
+          "show_product_blocks": false
+        }
+      },
+      "smk_collection_blocks": {
+        "type": "smk_collection_blocks",
+        "settings": {
+          "show_collection_blocks": false
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "blog_author_enable": false
+        }
+      },
+      "1598365886356": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "sustainable finds under $10",
+          "featured_collection": "sustainable-finds-10-or-under",
+          "num_per_row": 5,
+          "num_rows": 2,
+          "vendor_enable": false,
+          "show_sale_circle": false,
+          "show_sold_out_circle": false,
+          "center_grid_link": true
+        }
       }
     },
     "content_for_index": [
       "slider",
       "collection-list",
       "1590445414200",
-      "1591903441655",
-      "1591911633487",
       "1593382502829",
+      "1598365886356",
+      "1591911633487",
+      "1591903441655",
       "1593382705482",
       "1593383031146",
       "1590844865672",
@@ -759,6 +812,7 @@
       "1593388472180",
       "1593383437528",
       "1590456006120",
+      "1595694968834",
       "newsletter"
     ]
   },

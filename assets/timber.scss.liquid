@@ -2238,6 +2238,10 @@ $socialIconFontStack: "icons";
   display: block;
   max-width: 100%;
   position: relative;
+  
+  @include at-query ($max, $medium) {
+    margin: 0 auto;
+  }
 }
 
 .logo__image {
